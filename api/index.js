@@ -4,6 +4,7 @@ const apiRouter = express.Router();
 console.log('using API router');
 
 apiRouter.use('*', (req, res, next) => {
+  console.log('in 404 route');
   res.status(404);
   res.send({
     success: false,

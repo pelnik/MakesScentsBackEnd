@@ -17,6 +17,7 @@ app.use((req, res, next) => {
   console.log('<--- BODYLOGGER START --->');
   console.log(req.body);
   console.log('<--- BODYLOGGER END --->');
+  next();
 });
 
 const apiRouter = require('./api');
