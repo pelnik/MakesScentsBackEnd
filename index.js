@@ -22,8 +22,6 @@ app.use((req, res, next) => {
 const apiRouter = require('./api');
 app.use('/api', apiRouter);
 
-app;
-
 app.listen(PORT, () => {
   console.log(`Server is up on port ${PORT}`);
 });
