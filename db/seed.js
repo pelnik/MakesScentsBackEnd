@@ -11,6 +11,8 @@ async function dropTables() {
       DROP TABLE IF EXISTS products;
       DROP TABLE IF EXISTS users;
     `);
+
+    console.log('FINISHED DROPPING ALL TABLES');
   } catch (error) {
     console.error('ERROR dropping tables');
     throw error;
@@ -55,6 +57,8 @@ async function createTables() {
         quantity INTEGER NOT NULL
       );
     `);
+
+    console.log('CREATING ALL TABLES');
   } catch (error) {
     console.error('ERROR creating tables');
     throw error;
@@ -63,6 +67,7 @@ async function createTables() {
 
 async function createInitialUsers() {
   try {
+    console.log('Creating Users');
     await createUser({
       username: 'sandra',
       password: 'sandra123',
@@ -71,11 +76,14 @@ async function createInitialUsers() {
     });
 
     await createUser({
-      username: 'sandra',
-      password: 'sandra123',
-      name: 'sandra',
-      email: 'sandra@email.com',
+      username: 'albert',
+      password: 'bertie99',
+      name: 'Albert',
+      email: 'albert@email.com',
+      isAdmin: 'true',
     });
+
+    console.log('Finished creating users');
   } catch (error) {
     console.error('ERROR creating initial users');
     throw error;
@@ -84,9 +92,11 @@ async function createInitialUsers() {
 
 async function rebuildDB() {
   try {
+    console.log('rebuilding DB');
     await dropTables();
     await createTables();
     await createInitialUsers();
+    console.log('Finished rebuilding DB');
   } catch (error) {
     console.log('Error rebuilding DB');
     throw error;
