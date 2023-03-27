@@ -1,4 +1,6 @@
 const client = require('./client');
+const { createUser } = require('./');
+const { create } = require('domain');
 
 async function dropTables() {
   try {
@@ -59,10 +61,32 @@ async function createTables() {
   }
 }
 
+async function createInitialUsers() {
+  try {
+    await createUser({
+      username: 'sandra',
+      password: 'sandra123',
+      name: 'sandra',
+      email: 'sandra@email.com',
+    });
+
+    await createUser({
+      username: 'sandra',
+      password: 'sandra123',
+      name: 'sandra',
+      email: 'sandra@email.com',
+    });
+  } catch (error) {
+    console.error('ERROR creating initial users');
+    throw error;
+  }
+}
+
 async function rebuildDB() {
   try {
     await dropTables();
     await createTables();
+    await createInitialUsers();
   } catch (error) {
     console.log('Error rebuilding DB');
     throw error;
