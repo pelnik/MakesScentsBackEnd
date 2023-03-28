@@ -54,7 +54,7 @@ async function createTables() {
     await client.query(`
       CREATE TABLE products(
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) UNIQUE NOT NULL,
+        name VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
         price MONEY NOT NULL,
         pic_url VARCHAR(255) NOT NULL,
@@ -62,7 +62,8 @@ async function createTables() {
         inventory INTEGER NOT NULL,
         category_id INTEGER REFERENCES categories(id),
         color VARCHAR(255) NOT NULL,
-        fragrance VARCHAR(255) NOT NULL
+        fragrance VARCHAR(255) NOT NULL,
+        UNIQUE(name, size)
       );
     `);
 
@@ -134,9 +135,33 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
-      price: '$12.99',
+      price: '$10.99',
+      pic_url: 'https://picsum.photos/200/300',
+      size: 'S',
+      inventory: 3,
+      category_id: 1,
+      color: 'Blue',
+      fragrance: 'Blue Jasmine',
+    });
+
+    await createProduct({
+      name: 'Blue Jasmine and Royal Fern',
+      description: 'Smells like blue jasmine and royal fern.',
+      price: '$24.99',
       pic_url: 'https://picsum.photos/200/300',
       size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'Blue',
+      fragrance: 'Blue Jasmine',
+    });
+
+    await createProduct({
+      name: 'Blue Jasmine and Royal Fern',
+      description: 'Smells like blue jasmine and royal fern.',
+      price: '$40.99',
+      pic_url: 'https://picsum.photos/200/300',
+      size: 'L',
       inventory: 3,
       category_id: 1,
       color: 'Blue',
