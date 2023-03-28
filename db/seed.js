@@ -7,8 +7,10 @@ async function dropTables() {
     console.log('DROPPING ALL TABLES');
 
     await client.query(`
-      DROP TABLE IF EXISTS cart;
+      DROP TABLE IF EXISTS cart_products;
+      DROP TABLE IF EXISTS carts;
       DROP TABLE IF EXISTS products;
+      DROP TABLE IF EXISTS categories;
       DROP TABLE IF EXISTS users;
     `);
 
@@ -29,10 +31,26 @@ async function createTables() {
         password VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         name VARCHAR(255) NOT NULL,
-        isAdmin BOOLEAN NOT NULL DEFAULT false,
-        isActive BOOLEAN NOT NULL DEFAULT true
+        is_admin BOOLEAN NOT NULL DEFAULT false,
+        is_active BOOLEAN NOT NULL DEFAULT true
       );
     `);
+
+    await client.query(`
+    CREATE TABLE categories(
+      id SERIAL PRIMARY KEY,
+      category_name VARCHAR(255) UNIQUE NOT NULL
+    );
+  `);
+
+    await client.query(`
+    CREATE TABLE carts(
+      id SERIAL PRIMARY KEY,
+      user_id INTEGER REFERENCES users(id),
+      is_active BOOLEAN NOT NULL DEFAULT true,
+      status VARCHAR(255) NOT NULL DEFAULT 'Created'
+    );
+  `);
 
     await client.query(`
       CREATE TABLE products(
@@ -43,22 +61,26 @@ async function createTables() {
         pic_url VARCHAR(255) NOT NULL,
         size VARCHAR(1) NOT NULL,
         inventory INTEGER NOT NULL,
-        category VARCHAR(255) NOT NULL,
+        category_id INTEGER REFERENCES categories(id),
         color VARCHAR(255) NOT NULL,
         fragrance VARCHAR(255) NOT NULL
       );
     `);
 
-    await client.query(`
-      CREATE TABLE cart(
-        id SERIAL PRIMARY KEY,
-        userid INTEGER REFERENCES users(id),
-        productid INTEGER REFERENCES products(id),
-        quantity INTEGER NOT NULL
-      );
-    `);
+    console.log('here');
 
-    console.log('CREATING ALL TABLES');
+    await client.query(`
+    CREATE TABLE cart_products(
+      id SERIAL PRIMARY KEY,
+      cart_id INTEGER REFERENCES carts(id),
+      product_id INTEGER REFERENCES products(id),
+      quantity INTEGER NOT NULL
+    );
+  `);
+
+    console.log('here 2');
+
+    console.log('FINISHED CREATING ALL TABLES');
   } catch (error) {
     console.error('ERROR creating tables');
     throw error;
@@ -73,6 +95,7 @@ async function createInitialUsers() {
       password: 'sandra123',
       name: 'sandra',
       email: 'sandra@email.com',
+      is_admin: 'true',
     });
 
     await createUser({
@@ -80,7 +103,14 @@ async function createInitialUsers() {
       password: 'bertie99',
       name: 'Albert',
       email: 'albert@email.com',
-      isAdmin: 'true',
+      is_admin: 'true',
+    });
+
+    await createUser({
+      username: 'glamgal',
+      password: 'iloveglam',
+      name: 'Joshua',
+      email: 'joshua@email.com',
     });
 
     console.log('Finished creating users');
