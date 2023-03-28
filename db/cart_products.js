@@ -85,6 +85,28 @@ async function attachCartItems(carts) {
   }
 }
 
+async function deleteCartItem({ cart_products_id }) {
+  try {
+    const {
+      rows: [cart_product],
+    } = await client.query(
+      `
+        DELETE FROM cart_products
+        WHERE id = $1
+        ;
+      `,
+      [cart_products_id]
+    );
+
+    return cart_product;
+  } catch (error) {
+    console.error('error in addCartItem DB function');
+    throw error;
+  }
+}
+
+deleteCartItem({ cart_products_id: 1 });
+
 module.exports = {
   getAllCartItems,
   addCartItem,
