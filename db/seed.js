@@ -1,6 +1,5 @@
 const client = require('./client');
-const { createUser } = require('./');
-const { create } = require('domain');
+const { createUser, createProduct, createCategory } = require('./');
 
 async function dropTables() {
   try {
@@ -120,12 +119,45 @@ async function createInitialUsers() {
   }
 }
 
+async function createInitialCategories() {
+  try {
+    console.log('creating category');
+    await createCategory({ category_name: 'candle' });
+
+    console.log('finished creating category');
+  } catch (error) {}
+}
+
+async function createInitialProducts() {
+  try {
+    console.log('Finished create initial products');
+    await createProduct({
+      name: 'Blue Jasmine and Royal Fern',
+      description: 'Smells like blue jasmine and royal fern.',
+      price: '$12.99',
+      pic_url: 'https://picsum.photos/200/300',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'Blue',
+      fragrance: 'Blue Jasmine',
+    });
+
+    console.log('Finished create initial products');
+  } catch (error) {
+    console.error('error creating products', error);
+    throw error;
+  }
+}
+
 async function rebuildDB() {
   try {
     console.log('rebuilding DB');
     await dropTables();
     await createTables();
     await createInitialUsers();
+    await createInitialCategories();
+    await createInitialProducts();
     console.log('Finished rebuilding DB');
   } catch (error) {
     console.log('Error rebuilding DB');
