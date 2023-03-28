@@ -8,7 +8,7 @@ cartsRouter.get('/', requireUser, async (req, res, next) => {
   try {
     const user_id = req.user.id;
 
-    const oldOrders = await getCartItems({ user_id, is_active: true });
+    const oldOrders = await getCartItems({ user_id, is_active: false });
 
     res.send({
       success: true,
