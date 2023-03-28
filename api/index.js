@@ -1,8 +1,38 @@
 const express = require('express');
 const apiRouter = express.Router();
-
 console.log('using API router');
+const { JWT_SECRET } = process.env;
+const jwt = require('jsonwebtoken');
+const { getUserById } = require("../db/users.js")
 
+//setting `req.user`
+apiRouter.use(async (req, res, next) => {
+  const prefix = 'Bearer ';
+  const auth = req.header('Authorization');
+
+  if (!auth) {
+    next();
+  } else if (auth.startsWith(prefix)) {
+    const token = auth.slice(prefix.length);
+    try {
+      const { id } = jwt.verify(token, JWT_SECRET);
+      if (id) {
+        req.user = await getUserById(id);
+        next();
+      }
+      
+    } catch ({ name, message }) {
+      next ({ name, message })
+    }
+  } else {
+    next({
+      name: 'AuthorizationHeaderError',
+      message: `Authorization token must start with ${ prefix }`
+    });
+  }
+});
+
+//error handling 
 apiRouter.use('*', (req, res, next) => {
   console.log('in 404 route');
   res.status(404);
@@ -21,5 +51,16 @@ apiRouter.use((error, req, res, next) => {
     message: error.message,
   });
 });
+
+// GET /api/health
+apiRouter.get('/health', async (req, res, next) => {
+  res.send({
+      message: "All is well"
+  });
+});
+
+// ROUTER: /api/users
+const usersRouter = require('./users');
+apiRouter.use('/users', usersRouter);
 
 module.exports = apiRouter;
