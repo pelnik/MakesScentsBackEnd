@@ -29,8 +29,6 @@ async function getAllCartItems({ cart_id }) {
       [cart_id]
     );
 
-    console.log('cart products', products);
-
     return products;
   } catch (error) {
     console.error('error getting all cart items in DB');
@@ -51,8 +49,6 @@ async function addCartItem({ cart_id, product_id, quantity }) {
       [cart_id, product_id, quantity]
     );
 
-    console.log('cart_product', cart_product);
-
     return cart_product;
   } catch (error) {
     console.error('error in addCartItem DB function');
@@ -60,9 +56,37 @@ async function addCartItem({ cart_id, product_id, quantity }) {
   }
 }
 
-getAllCartItems({ cart_id: 1 });
+// Pass in array of carts
+async function attachCartItems(carts) {
+  try {
+    if (!Array.isArray(carts)) {
+      throw new Error('Carts parameter should be array.');
+    }
+
+    if (carts.length === 0) {
+      return carts;
+    }
+
+    orderItemPromises = carts.map((cart) => {
+      return getAllCartItems({ cart_id: cart.id });
+    });
+
+    const orderItems = await Promise.all(orderItemPromises);
+
+    const returnCarts = carts.map((cart, idx) => {
+      cart.items = orderItems[idx];
+      return cart;
+    });
+
+    return returnCarts;
+  } catch (error) {
+    console.error('Error getting old carts');
+    throw error;
+  }
+}
 
 module.exports = {
   getAllCartItems,
   addCartItem,
+  attachCartItems,
 };

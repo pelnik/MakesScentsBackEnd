@@ -1,4 +1,5 @@
 const client = require('./client');
+const { attachCartItems } = require('./cart_products');
 
 // Pass in just a cart-id.
 async function createNewCart({ user_id }) {
@@ -61,6 +62,31 @@ async function getActiveCart({ user_id }) {
     }
   } catch (error) {
     console.error('Error in getActiveCart DB function');
+    throw error;
+  }
+}
+
+async function getCartItems({ user_id, is_active }) {
+  try {
+    const { rows: carts } = await client.query(
+      `
+      SELECT *
+      FROM carts
+      WHERE user_id = $1 AND is_active = $2
+      ;
+    `,
+      [user_id, is_active]
+    );
+
+    if (carts.length === 0) {
+      return carts;
+    }
+
+    const cartWithItems = await attachCartItems(carts);
+
+    return cartWithItems;
+  } catch (error) {
+    console.error('Error getting old carts');
     throw error;
   }
 }
