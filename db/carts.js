@@ -121,4 +121,5 @@ async function updateCart({ cart_id, status }) {
 
 module.exports = {
   createNewCart,
+  getCartItems,
 };

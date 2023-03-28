@@ -1,9 +1,8 @@
 const express = require('express');
 const apiRouter = express.Router();
-console.log('using API router');
 const { JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
-const { getUserById } = require('../db/users.js');
+const { getUserById } = require('../db');
 
 //setting `req.user`
 apiRouter.use(async (req, res, next) => {
@@ -41,6 +40,10 @@ apiRouter.get('/health', async (req, res, next) => {
 // ROUTER: /api/users
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
+
+// ROUTER: /api/users
+const cartsRouter = require('./carts');
+apiRouter.use('/carts', cartsRouter);
 
 //error handling
 apiRouter.use('*', (req, res, next) => {

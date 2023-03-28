@@ -42,7 +42,7 @@ async function getUser({ username, password }) {
   const user = await getUserByUsername(username);
   const hashedPassword = user.password;
 
-  const isValid = await bcrypt.compare(password, hashedPassword)
+  const isValid = await bcrypt.compare(password, hashedPassword);
 
   if (isValid) {
     delete user.password;
@@ -66,16 +66,18 @@ async function getAllUsers() {
   }
 }
 
-
 async function getUserById(userId) {
   try {
     const {
       rows: [user],
-    } = await client.query(`
+    } = await client.query(
+      `
     SELECT id, username, name, email, is_admin, is_active
     FROM users
     WHERE id=$1;
-    ` [userId]);
+    `,
+      [userId]
+    );
 
     if (!user) {
       return null;
@@ -109,7 +111,7 @@ async function getUserByUsername(username) {
 async function updateUser({ id, ...fields }) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
-    .join(", ");
+    .join(', ');
 
   if (setString.length === 0) {
     return;
@@ -134,12 +136,11 @@ async function updateUser({ id, ...fields }) {
   }
 }
 
-
 module.exports = {
   createUser,
   getUserById,
   getAllUsers,
   getUser,
   getUserByUsername,
-  updateUser
+  updateUser,
 };
