@@ -1,5 +1,10 @@
 const client = require('./client');
-const { createUser, createProduct, createCategory } = require('./');
+const {
+  createUser,
+  createProduct,
+  createCategory,
+  addCartItem,
+} = require('./');
 
 async function dropTables() {
   try {
@@ -67,8 +72,6 @@ async function createTables() {
       );
     `);
 
-    console.log('here');
-
     await client.query(`
     CREATE TABLE cart_products(
       id SERIAL PRIMARY KEY,
@@ -77,8 +80,6 @@ async function createTables() {
       quantity INTEGER NOT NULL
     );
   `);
-
-    console.log('here 2');
 
     console.log('FINISHED CREATING ALL TABLES');
   } catch (error) {
@@ -175,6 +176,19 @@ async function createInitialProducts() {
   }
 }
 
+async function createInitialCartProducts() {
+  try {
+    await addCartItem({
+      cart_id: 1,
+      product_id: 1,
+      quantity: 2,
+    });
+  } catch (error) {
+    console.error('Error creating initial cart product');
+    throw error;
+  }
+}
+
 async function rebuildDB() {
   try {
     console.log('rebuilding DB');
@@ -183,6 +197,7 @@ async function rebuildDB() {
     await createInitialUsers();
     await createInitialCategories();
     await createInitialProducts();
+    await createInitialCartProducts();
     console.log('Finished rebuilding DB');
   } catch (error) {
     console.log('Error rebuilding DB');

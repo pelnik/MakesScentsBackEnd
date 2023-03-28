@@ -25,6 +25,23 @@ async function createNewCart({ user_id }) {
   }
 }
 
+// Remove old carts, if any
+async function removeOldCarts({ user_id, status }) {
+  const { rows: carts } = await client.query(
+    `
+      UPDATE carts
+      SET is_active = false, status = $2
+      WHERE user_id = $1
+      RETURNING *;
+    `,
+    [user_id, status]
+  );
+
+  console.log('carts', carts);
+}
+
+async function getActiveCart({ user_id }) {}
+
 module.exports = {
   createNewCart,
 };
