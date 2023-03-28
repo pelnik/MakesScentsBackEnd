@@ -4,17 +4,17 @@ const cartsRouter = express.Router();
 const { requireUser, requireAdminUser } = require('./utils.js');
 const { getCartItems } = require('../db');
 
-cartsRouter.get('/', requireUser, (req, res, next) => {
-  console.log('entering get cart');
-  console.log('req user', req.user);
+cartsRouter.get('/', requireUser, async (req, res, next) => {
   try {
     const user_id = req.user.id;
 
-    console.log('user_id', user_id);
+    const oldOrders = await getCartItems({ user_id, is_active: true });
 
-    const oldOrders = getCartItems({ user_id, is_active: false });
-
-    res.send(oldOrders);
+    res.send({
+      success: true,
+      message: 'Here are you orders.',
+      orders: oldOrders,
+    });
   } catch ({ name, message }) {
     next({
       name,
