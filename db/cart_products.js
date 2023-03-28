@@ -105,10 +105,30 @@ async function deleteCartItem({ cart_products_id }) {
   }
 }
 
-deleteCartItem({ cart_products_id: 1 });
+async function updateCartItem({ cart_product_id, quantity }) {
+  try {
+    const {
+      rows: [cart_product],
+    } = await client.query(
+      `
+        UPDATE cart_products
+        SET quantity = $1
+        WHERE id = $2
+        RETURNING *;
+      `,
+      [quantity, cart_product_id]
+    );
+
+    return cart_product;
+  } catch (error) {
+    console.error('Error updating cart');
+    throw error;
+  }
+}
 
 module.exports = {
   getAllCartItems,
   addCartItem,
   attachCartItems,
+  updateCartItem,
 };
