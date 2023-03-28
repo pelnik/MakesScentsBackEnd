@@ -1,6 +1,8 @@
 const client = require('./client');
-
 const bcrypt = require('bcrypt');
+
+const { createNewCart } = require('./carts');
+console.log(typeof createNewCart, 'create new cart type');
 
 async function createUser({ username, password, name, email, is_admin }) {
   const SALT_COUNT = 10;
@@ -24,6 +26,10 @@ async function createUser({ username, password, name, email, is_admin }) {
       `,
       [username, hashed_password, name, email, admin]
     );
+
+    const cart = createNewCart({ user_id: user.id });
+
+    user.cart = cart;
 
     return user;
   } catch (error) {
