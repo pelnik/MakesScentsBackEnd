@@ -1,5 +1,4 @@
 const client = require('./client');
-
 const bcrypt = require('bcrypt');
 
 async function createUser({ username, password, name, email, is_admin }) {
@@ -32,6 +31,108 @@ async function createUser({ username, password, name, email, is_admin }) {
   }
 }
 
+async function getUser({ username, password }) {
+  const user = await getUserByUsername(username);
+  const hashedPassword = user.password;
+
+  const isValid = await bcrypt.compare(password, hashedPassword)
+
+  if (isValid) {
+    delete user.password;
+    return user;
+  } else {
+    throw new Error("Passwords don't match");
+  }
+}
+
+async function getAllUsers() {
+  try {
+    const { rows } = await client.query(
+      `SELECT id, username, name, email, is_admin, is_active 
+      FROM users;
+    `
+    );
+
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+async function getUserById(userId) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(`
+    SELECT id, username, name, email, is_admin, is_active
+    FROM users
+    WHERE id=$1;
+    ` [userId]);
+
+    if (!user) {
+      return null;
+    }
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUserByUsername(username) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        SELECT *
+        FROM users
+        WHERE username=$1;
+        `,
+      [username]
+    );
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateUser({ id, ...fields }) {
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+
+  if (setString.length === 0) {
+    return;
+  }
+
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        UPDATE users
+        SET ${setString}
+        WHERE id=${id}
+        RETURNING *;
+        `,
+      Object.values(fields)
+    );
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
 module.exports = {
   createUser,
+  getUserById,
+  getAllUsers,
+  getUser,
+  getUserByUsername,
+  updateUser
 };
