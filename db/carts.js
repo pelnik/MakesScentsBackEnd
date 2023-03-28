@@ -27,18 +27,25 @@ async function createNewCart({ user_id }) {
 }
 
 // Remove old carts, if any
-async function removeOldCarts({ user_id, status }) {
-  const { rows: carts } = await client.query(
-    `
-      UPDATE carts
-      SET is_active = false, status = $2
-      WHERE user_id = $1
-      RETURNING *;
-    `,
-    [user_id, status]
-  );
+async function removeOldCarts({ cart_id, status }) {
+  try {
+    const {
+      rows: [cart],
+    } = await client.query(
+      `
+        UPDATE carts
+        SET is_active = false, status = $2
+        WHERE cart_id = $1
+        RETURNING *;
+      `,
+      [cart_id, status]
+    );
 
-  console.log('carts', carts);
+    return cart;
+  } catch (error) {
+    console.error('Error removing old carts');
+    throw error;
+  }
 }
 
 async function getActiveCart({ user_id }) {
@@ -89,6 +96,22 @@ async function getCartItems({ user_id, is_active }) {
     console.error('Error getting old carts');
     throw error;
   }
+}
+
+async function updateCart({ cart_id, status }) {
+  const {
+    rows: [cart],
+  } = await client.query(
+    `
+      UPDATE carts
+      SET status = $1
+      WHERE id = $2
+      RETURNING *;
+    `,
+    [status, cart_id]
+  );
+
+  console.log('carts', carts);
 }
 
 module.exports = {
