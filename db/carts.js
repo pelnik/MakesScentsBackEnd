@@ -27,21 +27,27 @@ async function createNewCart({ user_id }) {
 }
 
 // Remove old carts, if any
-async function removeOldCarts({ cart_id, status }) {
+async function removeOldCarts({ user_id, status }) {
   try {
     const {
-      rows: [cart],
+      rows: [oldCart],
     } = await client.query(
       `
         UPDATE carts
         SET is_active = false, status = $2
-        WHERE cart_id = $1
+        WHERE user_id = $1 AND is_active = true
         RETURNING *;
       `,
-      [cart_id, status]
+      [user_id, status]
     );
 
-    return cart;
+    const newCart = await createNewCart({ user_id });
+
+    if (newCart === undefined) {
+      throw new Error('Error creating new cart');
+    }
+
+    return { oldCart, newCart };
   } catch (error) {
     console.error('Error removing old carts');
     throw error;
@@ -106,4 +112,5 @@ module.exports = {
   createNewCart,
   getCartItems,
   updateCart,
+  removeOldCarts,
 };
