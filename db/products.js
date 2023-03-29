@@ -63,7 +63,7 @@ async function getAllProducts() {
   }
 }
 
-// return a single product product
+// return a single product
 async function getProductById(id) {
   try {
     const { rows: [product] } = await client.query(
