@@ -39,8 +39,6 @@ cartProductsRouter.delete(
       console.log('create product', cartProduct);
 
       if (user_id === cartProduct.user_id) {
-        const 
-
         res.send({
           success: true,
         });
