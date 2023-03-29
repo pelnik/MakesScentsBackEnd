@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const connectionString =
-  process.env.DATABASE_URL || 'https://localhost:5432/grace-dev';
+  process.env.DATABASE_URL || 'postgresql://pelnik:v2_42bmT_kwGEGUQ8p2M3kKhkJrTX5G7@db.bit.io:5432/pelnik/grace-dev';
 
 console.log('connection up', connectionString);
 
