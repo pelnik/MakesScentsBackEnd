@@ -44,6 +44,7 @@ async function addCartItem({ cart_id, product_id, quantity }) {
       `
         INSERT INTO cart_products(cart_id, product_id, quantity)
         VALUES($1, $2, $3)
+        ON CONFLICT DO NOTHING
         RETURNING *;
       `,
       [cart_id, product_id, quantity]

@@ -7,6 +7,7 @@ const {
   getCartProduct,
   deleteCartItem,
   updateCartItem,
+  addCartItem,
 } = require('../db');
 
 cartProductsRouter.get('/', requireUser, async (req, res, next) => {
@@ -94,6 +95,52 @@ cartProductsRouter.patch('/:cart_product_id', async (req, res, next) => {
         name: 'WrongUser',
         message: "Cannot update someone else's cart item.",
       });
+    }
+  } catch ({ name, message }) {
+    next({
+      name,
+      message,
+    });
+  }
+});
+
+cartProductsRouter.post('/:product_id', async (req, res, next) => {
+  try {
+    const user_id = req.user.id;
+    const { quantity } = req.body;
+    let { product_id } = req.params;
+    product_id = Number(product_id);
+
+    const cartProduct = await getCartItems({ user_id, is_active: true });
+
+    const cart_id = cartProduct.id;
+    console.log('cart id', cart_id);
+
+    if (quantity === undefined) {
+      next({
+        name: 'QuantityRequired',
+        message: 'A quantity is required to be sent in the body.',
+      });
+    } else {
+      const addedItem = await addCartItem({
+        cart_id,
+        product_id,
+        quantity,
+      });
+
+      if (addedItem === undefined) {
+        next({
+          name: 'InvalidProductId',
+          message:
+            'Product ID send it invalid, either duplicate or does not exist',
+        });
+      } else {
+        res.send({
+          success: true,
+          message: 'Quantity updated',
+          item: addedItem,
+        });
+      }
     }
   } catch ({ name, message }) {
     next({
