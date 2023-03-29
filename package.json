@@ -1,4 +1,13 @@
 {
+  "name": "grace-shopper",
+  "version": "0.0.1",
+  "description": "eCommerce site",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node ./db/seed.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",

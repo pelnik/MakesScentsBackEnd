@@ -3,7 +3,7 @@ const apiRouter = express.Router();
 console.log('using API router');
 const { JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
-const { getUserById } = require("../db/users.js")
+const { getUserById } = require('../db/users.js');
 
 //setting `req.user`
 apiRouter.use(async (req, res, next) => {
@@ -20,21 +20,30 @@ apiRouter.use(async (req, res, next) => {
         req.user = await getUserById(id);
         next();
       }
-      
     } catch ({ name, message }) {
-      next ({ name, message })
+      next({ name, message });
     }
   } else {
     next({
       name: 'AuthorizationHeaderError',
-      message: `Authorization token must start with ${ prefix }`
+      message: `Authorization token must start with ${prefix}`,
     });
   }
 });
 
-//error handling 
+// GET /api/health
+apiRouter.get('/health', async (req, res, next) => {
+  res.send({
+    message: 'All is well',
+  });
+});
+
+// ROUTER: /api/users
+const usersRouter = require('./users');
+apiRouter.use('/users', usersRouter);
+
+//error handling
 apiRouter.use('*', (req, res, next) => {
-  console.log('in 404 route');
   res.status(404);
   res.send({
     success: false,
@@ -51,16 +60,5 @@ apiRouter.use((error, req, res, next) => {
     message: error.message,
   });
 });
-
-// GET /api/health
-apiRouter.get('/health', async (req, res, next) => {
-  res.send({
-      message: "All is well"
-  });
-});
-
-// ROUTER: /api/users
-const usersRouter = require('./users');
-apiRouter.use('/users', usersRouter);
 
 module.exports = apiRouter;
