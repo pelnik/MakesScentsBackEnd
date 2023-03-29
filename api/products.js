@@ -1,23 +1,23 @@
-const express = require("express");
+const express = require('express');
+const productsRouter = express.Router();
+
+const { requireAdminUser } = require('./utils');
 const {
   createProduct,
   getAllProducts,
   getProductById,
   updateProduct,
   destroyProduct,
-  getProductById,
-} = require("../db");
-const { requireAdminUser } = require("./utils");
-const productsRouter = express.Router();
+} = require('../db');
 
 // GET /api/products
-productsRouter.get("/", async (req, res, next) => {
+productsRouter.get('/', async (req, res, next) => {
   try {
     const productsList = await getAllProducts();
 
     res.send({
       success: true,
-      message: "These are all of current products.",
+      message: 'These are all of current products.',
       products: productsList,
     });
   } catch ({ name, message }) {
@@ -26,7 +26,7 @@ productsRouter.get("/", async (req, res, next) => {
 });
 
 // POST /api/products **
-productsRouter.post("/", requireAdminUser, async (req, res, next) => {
+productsRouter.post('/', requireAdminUser, async (req, res, next) => {
   const {
     name,
     description,
@@ -54,7 +54,7 @@ productsRouter.post("/", requireAdminUser, async (req, res, next) => {
 
     res.send({
       success: true,
-      message: "You added a new product.",
+      message: 'You added a new product.',
       product: newProduct,
     });
   } catch ({ name, message }) {
@@ -64,7 +64,7 @@ productsRouter.post("/", requireAdminUser, async (req, res, next) => {
 
 // PATCH /api/products/:product_id **
 productsRouter.patch(
-  "/:product_id",
+  '/:product_id',
   requireAdminUser,
   async (req, res, next) => {
     const { product_id } = req.params;
@@ -76,8 +76,8 @@ productsRouter.patch(
 
       if (!selectProduct) {
         next({
-          name: "ProductDoesNotExist",
-          message: "Product does not exist",
+          name: 'ProductDoesNotExist',
+          message: 'Product does not exist',
         });
       } else {
         const productUpdate = await updateProduct({
@@ -91,7 +91,7 @@ productsRouter.patch(
 
         res.send({
           success: true,
-          message: "You updated a product.",
+          message: 'You updated a product.',
           product: productUpdate,
         });
       }
@@ -103,7 +103,7 @@ productsRouter.patch(
 
 // DELETE /api/products/:product_id **
 productsRouter.delete(
-  "/:product_id",
+  '/:product_id',
   requireAdminUser,
   async (req, res, next) => {
     const { product_id } = req.params;
@@ -114,15 +114,15 @@ productsRouter.delete(
 
       if (!selectProduct) {
         next({
-          name: "ProductDoesNotExist",
-          message: "Product does not exist",
+          name: 'ProductDoesNotExist',
+          message: 'Product does not exist',
         });
       } else {
         await destroyProduct(id);
 
         res.send({
           success: true,
-          message: "You deleted a product.",
+          message: 'You deleted a product.',
         });
       }
     } catch ({ name, message }) {
