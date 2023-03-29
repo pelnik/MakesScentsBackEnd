@@ -108,6 +108,25 @@ async function getUserByUsername(username) {
   }
 }
 
+async function getUserByEmail(email) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        SELECT *
+        FROM users
+        WHERE email=$1;
+        `,
+      [email]
+    );
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function updateUser({ id, ...fields }) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
@@ -142,5 +161,6 @@ module.exports = {
   getAllUsers,
   getUser,
   getUserByUsername,
+  getUserByEmail,
   updateUser,
 };
