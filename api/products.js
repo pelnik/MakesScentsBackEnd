@@ -6,6 +6,7 @@ const {
   createProduct,
   getAllProducts,
   getProductById,
+  getProductByName,
   updateProduct,
   destroyProduct,
 } = require('../db');
@@ -40,25 +41,33 @@ productsRouter.post('/', requireAdminUser, async (req, res, next) => {
   } = req.body;
 
   try {
-    const newProduct = await createProduct({
-      name,
-      description,
-      price,
-      pic_url,
-      size,
-      inventory,
-      category_id,
-      color,
-      fragrance,
-    });
-
-    res.send({
-      success: true,
-      message: 'You added a new product.',
-      product: newProduct,
-    });
+    const product = await getProductByName(name)
+    if(product && product.size === size) {
+      next({
+        name: 'ProductAlreadyExist',
+        message: 'Product by this name and size already exist.'
+      })
+    } else {
+      const newProduct = await createProduct({
+        name,
+        description,
+        price,
+        pic_url,
+        size,
+        inventory,
+        category_id,
+        color,
+        fragrance,
+      });
+  
+      res.send({
+        success: true,
+        message: 'You added a new product.',
+        product: newProduct,
+      });
+    }
   } catch ({ name, message }) {
-    next({ name, message });
+    next({ name:"this error", message });
   }
 });
 
@@ -88,11 +97,13 @@ productsRouter.patch(
           pic_url,
           inventory,
         });
+        console.log(productUpdate, "update")
 
         res.send({
           success: true,
-          message: 'You updated a product.',
           product: productUpdate,
+          message: 'You updated a product.',
+          
         });
       }
     } catch ({ name, message }) {
