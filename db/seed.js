@@ -77,7 +77,8 @@ async function createTables() {
       id SERIAL PRIMARY KEY,
       cart_id INTEGER REFERENCES carts(id),
       product_id INTEGER REFERENCES products(id),
-      quantity INTEGER NOT NULL
+      quantity INTEGER NOT NULL,
+      UNIQUE(cart_id, product_id)
     );
   `);
 

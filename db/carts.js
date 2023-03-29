@@ -27,48 +27,29 @@ async function createNewCart({ user_id }) {
 }
 
 // Remove old carts, if any
-async function removeOldCarts({ cart_id, status }) {
+async function removeOldCarts({ user_id, status }) {
   try {
     const {
-      rows: [cart],
+      rows: [oldCart],
     } = await client.query(
       `
         UPDATE carts
         SET is_active = false, status = $2
-        WHERE cart_id = $1
+        WHERE user_id = $1 AND is_active = true
         RETURNING *;
       `,
-      [cart_id, status]
+      [user_id, status]
     );
 
-    return cart;
+    const newCart = await createNewCart({ user_id });
+
+    if (newCart === undefined) {
+      throw new Error('Error creating new cart');
+    }
+
+    return { oldCart, newCart };
   } catch (error) {
     console.error('Error removing old carts');
-    throw error;
-  }
-}
-
-async function getActiveCart({ user_id }) {
-  try {
-    const { rows: carts } = await client.query(
-      `
-      SELECT *
-      FROM carts
-      WHERE user_id = $1 AND is_active = true
-      ;
-    `,
-      [user_id]
-    );
-
-    if (carts && carts.length === 0) {
-      throw new Error('No carts for user, wrong user id?');
-    } else if (carts && carts.length > 1) {
-      throw new Error("Multiple active carts. This shouldn't happen.");
-    } else {
-      return carts;
-    }
-  } catch (error) {
-    console.error('Error in getActiveCart DB function');
     throw error;
   }
 }
@@ -89,7 +70,15 @@ async function getCartItems({ user_id, is_active }) {
       return carts;
     }
 
-    const cartWithItems = await attachCartItems(carts);
+    if (carts.length > 1 && is_active === true) {
+      throw new Error('Multiple active carts returned, something is wrong');
+    }
+
+    let cartWithItems = await attachCartItems(carts);
+
+    if (is_active === true) {
+      cartWithItems = cartWithItems[0];
+    }
 
     return cartWithItems;
   } catch (error) {
@@ -122,4 +111,6 @@ async function updateCart({ cart_id, status }) {
 module.exports = {
   createNewCart,
   getCartItems,
+  updateCart,
+  removeOldCarts,
 };

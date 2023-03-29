@@ -44,6 +44,7 @@ async function addCartItem({ cart_id, product_id, quantity }) {
       `
         INSERT INTO cart_products(cart_id, product_id, quantity)
         VALUES($1, $2, $3)
+        ON CONFLICT DO NOTHING
         RETURNING *;
       `,
       [cart_id, product_id, quantity]
@@ -85,7 +86,7 @@ async function attachCartItems(carts) {
   }
 }
 
-async function deleteCartItem({ cart_products_id }) {
+async function deleteCartItem({ cart_product_id }) {
   try {
     const {
       rows: [cart_product],
@@ -93,9 +94,10 @@ async function deleteCartItem({ cart_products_id }) {
       `
         DELETE FROM cart_products
         WHERE id = $1
+        RETURNING *
         ;
       `,
-      [cart_products_id]
+      [cart_product_id]
     );
 
     return cart_product;
@@ -126,9 +128,33 @@ async function updateCartItem({ cart_product_id, quantity }) {
   }
 }
 
+async function getCartProduct({ cart_product_id }) {
+  try {
+    const {
+      rows: [cart_product],
+    } = await client.query(
+      `
+        SELECT cp.*, c.user_id, c.is_active, c.status
+        FROM cart_products cp
+        LEFT JOIN carts c
+          ON c.id = cp.cart_id
+        WHERE cp.id = $1
+      `,
+      [cart_product_id]
+    );
+
+    return cart_product;
+  } catch (error) {
+    console.error('Error getting single cart product.');
+    throw error;
+  }
+}
+
 module.exports = {
   getAllCartItems,
   addCartItem,
   attachCartItems,
   updateCartItem,
+  deleteCartItem,
+  getCartProduct,
 };
