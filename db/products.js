@@ -63,15 +63,16 @@ async function getAllProducts() {
   }
 }
 
-// return a single product product
+// return a single product by its id
 async function getProductById(id) {
   try {
     const { rows: [product] } = await client.query(
       `
-      SELECT FROM products
-      WHERE id = ${id};
-      `
-    )
+      SELECT *
+      FROM products
+      WHERE id=$1;
+      `,
+    [id])
 
     return product;
   } catch (error) {
@@ -80,11 +81,33 @@ async function getProductById(id) {
   }
 }
 
+// return a single product by its name
+async function getProductByName(name) {
+  try {
+    const { rows: [product] } = await client.query(
+      `
+      SELECT *
+      FROM products
+      WHERE name=$1;
+      `,
+    [name]);
+
+    return product;
+  } catch (error) {
+    console.error("error getting product by name", error);
+    throw error
+  }
+}
+
 // update product detail except for id and return updated product
-async function updateProduct(id, ...fields) {
+async function updateProduct({id, ...fields}) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}" = $${index + 1}`)
     .join(", ");
+
+  if (setString.length === 0) {
+    return;
+  }
 
   try {
     const {
@@ -93,11 +116,12 @@ async function updateProduct(id, ...fields) {
       `
       UPDATE products
       SET ${setString}
-      WHERE id = ${id}
+      WHERE id=${id}
       RETURNING *;
       `,
       Object.values(fields)
     );
+    console.log("product", product)
 
     return product;
   } catch (error) {
@@ -128,6 +152,7 @@ module.exports = {
   createProduct,
   getAllProducts,
   getProductById,
+  getProductByName,
   updateProduct,
   destroyProduct,
 };
