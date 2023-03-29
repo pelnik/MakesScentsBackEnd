@@ -99,21 +99,27 @@ async function getCartItems({ user_id, is_active }) {
 }
 
 async function updateCart({ cart_id, status }) {
-  const {
-    rows: [cart],
-  } = await client.query(
-    `
-      UPDATE carts
-      SET status = $1
-      WHERE id = $2
-      RETURNING *;
-    `,
-    [status, cart_id]
-  );
+  try {
+    const {
+      rows: [cart],
+    } = await client.query(
+      `
+        UPDATE carts
+        SET status = $1
+        WHERE id = $2
+        RETURNING *;
+      `,
+      [status, cart_id]
+    );
 
-  console.log('carts', carts);
+    return cart;
+  } catch (error) {
+    console.error('Error updating cart');
+    throw error;
+  }
 }
 
 module.exports = {
   createNewCart,
+  getCartItems,
 };

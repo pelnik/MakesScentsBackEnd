@@ -183,6 +183,12 @@ async function createInitialCartProducts() {
       product_id: 1,
       quantity: 2,
     });
+
+    await addCartItem({
+      cart_id: 2,
+      product_id: 2,
+      quantity: 3,
+    });
   } catch (error) {
     console.error('Error creating initial cart product');
     throw error;

@@ -85,8 +85,50 @@ async function attachCartItems(carts) {
   }
 }
 
+async function deleteCartItem({ cart_products_id }) {
+  try {
+    const {
+      rows: [cart_product],
+    } = await client.query(
+      `
+        DELETE FROM cart_products
+        WHERE id = $1
+        ;
+      `,
+      [cart_products_id]
+    );
+
+    return cart_product;
+  } catch (error) {
+    console.error('error in addCartItem DB function');
+    throw error;
+  }
+}
+
+async function updateCartItem({ cart_product_id, quantity }) {
+  try {
+    const {
+      rows: [cart_product],
+    } = await client.query(
+      `
+        UPDATE cart_products
+        SET quantity = $1
+        WHERE id = $2
+        RETURNING *;
+      `,
+      [quantity, cart_product_id]
+    );
+
+    return cart_product;
+  } catch (error) {
+    console.error('Error updating cart');
+    throw error;
+  }
+}
+
 module.exports = {
   getAllCartItems,
   addCartItem,
   attachCartItems,
+  updateCartItem,
 };
