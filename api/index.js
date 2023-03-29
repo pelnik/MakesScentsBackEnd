@@ -49,6 +49,10 @@ apiRouter.use('/carts', cartsRouter);
 const cartProductsRouter = require('./cart_products');
 apiRouter.use('/cart_products', cartProductsRouter);
 
+// ROUTER: /api/carts_products_router
+const categoriesRouter = require('./categories');
+apiRouter.use('/categories', categoriesRouter);
+
 //error handling
 apiRouter.use('*', (req, res, next) => {
   res.status(404);
