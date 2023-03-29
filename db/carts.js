@@ -48,31 +48,6 @@ async function removeOldCarts({ cart_id, status }) {
   }
 }
 
-async function getActiveCart({ user_id }) {
-  try {
-    const { rows: carts } = await client.query(
-      `
-      SELECT *
-      FROM carts
-      WHERE user_id = $1 AND is_active = true
-      ;
-    `,
-      [user_id]
-    );
-
-    if (carts && carts.length === 0) {
-      throw new Error('No carts for user, wrong user id?');
-    } else if (carts && carts.length > 1) {
-      throw new Error("Multiple active carts. This shouldn't happen.");
-    } else {
-      return carts;
-    }
-  } catch (error) {
-    console.error('Error in getActiveCart DB function');
-    throw error;
-  }
-}
-
 async function getCartItems({ user_id, is_active }) {
   try {
     const { rows: carts } = await client.query(
@@ -89,7 +64,15 @@ async function getCartItems({ user_id, is_active }) {
       return carts;
     }
 
-    const cartWithItems = await attachCartItems(carts);
+    if (carts.length > 1 && is_active === true) {
+      throw new Error('Multiple active carts returned, something is wrong');
+    }
+
+    let cartWithItems = await attachCartItems(carts);
+
+    if (is_active === true) {
+      cartWithItems = cartWithItems[0];
+    }
 
     return cartWithItems;
   } catch (error) {

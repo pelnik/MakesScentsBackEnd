@@ -41,9 +41,13 @@ apiRouter.get('/health', async (req, res, next) => {
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
-// ROUTER: /api/users
+// ROUTER: /api/cartsRouter
 const cartsRouter = require('./carts');
 apiRouter.use('/carts', cartsRouter);
+
+// ROUTER: /api/carts_products_router
+const cartProductsRouter = require('./cart_products');
+apiRouter.use('/cart_products', cartProductsRouter);
 
 //error handling
 apiRouter.use('*', (req, res, next) => {
