@@ -2,7 +2,7 @@ const express = require('express');
 const cartProductsRouter = express.Router();
 
 const { requireUser } = require('./utils');
-const { getCartItems, getCartProduct } = require('../db');
+const { getCartItems, getCartProduct, deleteCartItem } = require('../db');
 
 cartProductsRouter.get('/', requireUser, async (req, res, next) => {
   try {
@@ -38,9 +38,15 @@ cartProductsRouter.delete(
 
       console.log('create product', cartProduct);
 
-      if (user_id === cartProduct.user_id) {
+      if (cartProduct && cartProduct.user_id === user_id) {
+        const deletedCartItem = await deleteCartItem({ cart_product_id });
+
+        console.log('deleted cart item', deletedCartItem);
+
         res.send({
           success: true,
+          message: 'Cart item deleted.',
+          cartItem: deletedCartItem,
         });
       } else {
         next({

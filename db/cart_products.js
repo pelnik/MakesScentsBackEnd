@@ -85,17 +85,18 @@ async function attachCartItems(carts) {
   }
 }
 
-async function deleteCartItem({ user_id, product_id }) {
+async function deleteCartItem({ cart_product_id }) {
   try {
     const {
       rows: [cart_product],
     } = await client.query(
       `
         DELETE FROM cart_products
-        WHERE product_id = $1
+        WHERE id = $1
+        RETURNING *
         ;
       `,
-      [product_id]
+      [cart_product_id]
     );
 
     return cart_product;
