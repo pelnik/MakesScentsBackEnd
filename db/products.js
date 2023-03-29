@@ -100,7 +100,7 @@ async function getProductByName(name) {
 }
 
 // update product detail except for id and return updated product
-async function updateProduct(id, ...fields) {
+async function updateProduct({id, ...fields}) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}" = $${index + 1}`)
     .join(", ");
