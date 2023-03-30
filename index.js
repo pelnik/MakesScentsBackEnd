@@ -7,11 +7,11 @@ const client = require('./db/client');
 
 const PORT = 3000;
 
-const app = express();
-app.use(express.json());
-
 app.use(cors());
 app.use(morgan('dev'));
+
+const app = express();
+app.use(express.json());
 
 app.use((req, res, next) => {
   console.log('<--- BODYLOGGER START --->');
