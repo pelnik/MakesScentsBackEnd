@@ -18,6 +18,7 @@ usersRouter.post('/register', async (req, res, next) => {
 
   try {
     const _user = await getUserByUsername(username);
+    const _email = await getUserByEmail(email)
 
     if (_user) {
       next({
@@ -25,6 +26,13 @@ usersRouter.post('/register', async (req, res, next) => {
         message: 'A user by that username already exists',
       });
     }
+    else if (_email) {
+      next({
+        name: 'EmailExistsError',
+        message: 'A user by that email already exists',
+      });
+    }
+
 
     const user = await createUser({
       username,
