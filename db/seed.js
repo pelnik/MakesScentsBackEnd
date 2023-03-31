@@ -133,7 +133,7 @@ async function createInitialCategories() {
 
 async function createInitialProducts() {
   try {
-    console.log('Finished create initial products');
+    console.log('Creating initial products');
     await createProduct({
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
@@ -179,6 +179,7 @@ async function createInitialProducts() {
 
 async function createInitialCartProducts() {
   try {
+    console.log('Creating initial cart products');
     await addCartItem({
       cart_id: 1,
       product_id: 1,
@@ -187,9 +188,23 @@ async function createInitialCartProducts() {
 
     await addCartItem({
       cart_id: 2,
+      product_id: 1,
+      quantity: 1,
+    });
+
+    await addCartItem({
+      cart_id: 2,
       product_id: 2,
       quantity: 3,
     });
+
+    await addCartItem({
+      cart_id: 2,
+      product_id: 3,
+      quantity: 5,
+    });
+
+    console.log('Finished creating initial cart products');
   } catch (error) {
     console.error('Error creating initial cart product');
     throw error;
