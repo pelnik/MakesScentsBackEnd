@@ -26,6 +26,31 @@ productsRouter.get('/', async (req, res, next) => {
   }
 });
 
+// GET /api/products/:product_id
+productsRouter.get('/:product_id', async (req, res, next) => {
+  const { product_id } = req.params;
+  const id = Number(product_id);
+
+  try {
+    const selectProduct = await getProductById(id);
+
+    if (!selectProduct) {
+      next({
+        name: 'ProductDoesNotExist',
+        message: 'Product does not exist',
+      });
+    } else {
+      res.send({
+        success: true,
+        message: 'This is the selected product',
+        product: selectProduct,
+      });
+    }
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
 // POST /api/products **
 productsRouter.post('/', requireAdminUser, async (req, res, next) => {
   const {
