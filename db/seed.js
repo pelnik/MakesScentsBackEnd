@@ -1,5 +1,6 @@
 const NUMBER_OF_FAKE_USERS = 100;
 const NUMBER_OF_FAKE_PRODUCTS = 100;
+const MAX_NUMBER_OF_CART_PRODUCTS = 5;
 
 const client = require('./client');
 const {
@@ -7,6 +8,8 @@ const {
   createProduct,
   createCategory,
   addCartItem,
+  getAllUsers,
+  getCartItems,
 } = require('./');
 
 const { faker } = require('@faker-js/faker');
@@ -250,29 +253,45 @@ async function createInitialProducts() {
 async function createInitialCartProducts() {
   try {
     console.log('Creating initial cart products');
-    await addCartItem({
-      cart_id: 1,
-      product_id: 1,
-      quantity: 2,
-    });
 
-    await addCartItem({
-      cart_id: 2,
-      product_id: 1,
-      quantity: 1,
-    });
+    const cart_product_promises = [];
+    const allUsers = await getAllUsers();
 
-    await addCartItem({
-      cart_id: 2,
-      product_id: 2,
-      quantity: 3,
-    });
+    const cart_promises = [];
 
-    await addCartItem({
-      cart_id: 2,
-      product_id: 3,
-      quantity: 5,
-    });
+    for (let i = 0; i < allUsers.length; i += 1) {
+      const user = allUsers[i];
+      cart_promises.push(getCartItems({ user_id: user.id, is_active: true }));
+    }
+
+    const allCarts = await Promise.all(cart_promises);
+
+    // Will create some duplicate combos of cart and cart products
+    // That's ok, the DB function will just ignore them
+    for (let i = 0; i < allUsers.length; i += 1) {
+      const user = allUsers[i];
+      const cart = allCarts[i];
+
+      for (let i = 0; i < MAX_NUMBER_OF_CART_PRODUCTS; i += 1) {
+        cart_product_promises.push(
+          await addCartItem({
+            cart_id: cart.id,
+            product_id: faker.datatype.number({
+              min: 1,
+              max: NUMBER_OF_FAKE_PRODUCTS,
+            }),
+            quantity: faker.datatype.number({
+              min: 1,
+              max: 5,
+            }),
+          })
+        );
+      }
+    }
+
+    const allPromises = await Promise.all(cart_product_promises);
+
+    console.log('cart product promises', allPromises[30]);
 
     console.log('Finished creating initial cart products');
   } catch (error) {

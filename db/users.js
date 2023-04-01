@@ -2,7 +2,6 @@ const client = require('./client');
 const bcrypt = require('bcrypt');
 
 const { createNewCart } = require('./carts');
-console.log(typeof createNewCart, 'create new cart type');
 
 async function createUser({ username, password, name, email, is_admin }) {
   const SALT_COUNT = 10;
