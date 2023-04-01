@@ -158,6 +158,8 @@ async function createInitialCategories() {
   try {
     console.log('creating category');
     await createCategory({ category_name: 'candle' });
+    await createCategory({ category_name: 'diffuser' });
+    await createCategory({ category_name: 'car' });
 
     console.log('finished creating category');
   } catch (error) {}
@@ -201,6 +203,42 @@ async function createInitialProducts() {
       color: 'Blue',
       fragrance: 'Blue Jasmine',
     });
+
+    const product_promises = [];
+
+    for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
+      const randomNum = faker.datatype.number(100);
+      let size;
+
+      if (randomNum < 33) {
+        size = 'S';
+      } else if (randomNum < 66) {
+        size = 'M';
+      } else {
+        size = 'L';
+      }
+
+      product_promises.push(
+        createProduct({
+          name: faker.commerce.productName(),
+          description: faker.commerce.productDescription(),
+          price: faker.commerce.price(9, 50, 2, '$'),
+          pic_url: faker.image.fashion(200, 300),
+          size,
+          inventory: faker.datatype.number(5),
+          category_id: faker.datatype.number({
+            min: 1,
+            max: 3,
+          }),
+          color: faker.color.human(),
+          fragrance: faker.commerce.productAdjective(),
+        })
+      );
+    }
+
+    const allPromises = await Promise.all(product_promises);
+
+    console.log('product promises', allPromises[30]);
 
     console.log('Finished create initial products');
   } catch (error) {
