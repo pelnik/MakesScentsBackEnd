@@ -130,6 +130,7 @@ async function createInitialUsers() {
 
     for (let i = 0; i < NUMBER_OF_FAKE_USERS - 3; i += 1) {
       const fakeFirstName = faker.name.firstName();
+      const fakeLastName = faker.name.lastName();
 
       const is_admin = faker.datatype.number(100) < 5;
 
@@ -137,10 +138,11 @@ async function createInitialUsers() {
         createUser({
           name: faker.name.fullName({
             firstName: fakeFirstName,
+            lastName: fakeLastName,
           }),
-          username: faker.internet.userName(fakeFirstName),
+          username: faker.internet.userName(fakeFirstName, fakeLastName),
           password: 'fakeUser123',
-          email: faker.internet.email(fakeFirstName),
+          email: faker.internet.email(fakeFirstName, fakeLastName),
           is_admin,
         })
       );
@@ -175,7 +177,7 @@ async function createInitialProducts() {
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
       price: '$10.99',
-      pic_url: 'https://picsum.photos/200/300',
+      pic_url: faker.image.food(300, 200, true),
       size: 'S',
       inventory: 3,
       category_id: 1,
@@ -187,7 +189,7 @@ async function createInitialProducts() {
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
       price: '$24.99',
-      pic_url: 'https://picsum.photos/200/300',
+      pic_url: faker.image.food(300, 200, true),
       size: 'M',
       inventory: 3,
       category_id: 1,
@@ -199,7 +201,7 @@ async function createInitialProducts() {
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
       price: '$40.99',
-      pic_url: 'https://picsum.photos/200/300',
+      pic_url: faker.image.food(300, 200, true),
       size: 'L',
       inventory: 3,
       category_id: 1,
@@ -226,7 +228,7 @@ async function createInitialProducts() {
           name: faker.commerce.productName(),
           description: faker.commerce.productDescription(),
           price: faker.commerce.price(9, 50, 2, '$'),
-          pic_url: faker.image.fashion(200, 300),
+          pic_url: faker.image.food(300, 200, true),
           size,
           inventory: faker.datatype.number(5),
           category_id: faker.datatype.number({
