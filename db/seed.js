@@ -1,3 +1,6 @@
+const NUMBER_OF_FAKE_USERS = 100;
+const NUMBER_OF_FAKE_PRODUCTS = 100;
+
 const client = require('./client');
 const {
   createUser,
@@ -5,6 +8,11 @@ const {
   createCategory,
   addCartItem,
 } = require('./');
+
+const { faker } = require('@faker-js/faker');
+
+// Update to change all users and products
+faker.seed(100);
 
 async function dropTables() {
   try {
@@ -114,6 +122,30 @@ async function createInitialUsers() {
       name: 'Joshua',
       email: 'joshua@email.com',
     });
+
+    const user_promises = [];
+
+    for (let i = 0; i < NUMBER_OF_FAKE_USERS - 3; i += 1) {
+      const fakeFirstName = faker.name.firstName();
+
+      const is_admin = faker.datatype.number(100) < 5;
+
+      user_promises.push(
+        createUser({
+          name: faker.name.fullName({
+            firstName: fakeFirstName,
+          }),
+          username: faker.internet.userName(fakeFirstName),
+          password: 'fakeUser123',
+          email: faker.internet.email(fakeFirstName),
+          is_admin,
+        })
+      );
+    }
+
+    const allPromises = await Promise.all(user_promises);
+
+    console.log('user promises', allPromises[30]);
 
     console.log('Finished creating users');
   } catch (error) {

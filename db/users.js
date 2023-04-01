@@ -27,9 +27,13 @@ async function createUser({ username, password, name, email, is_admin }) {
       [username, hashed_password, name, email, admin]
     );
 
-    const cart = createNewCart({ user_id: user.id });
+    if (user) {
+      const cart = await createNewCart({ user_id: user.id });
 
-    user.cart = cart;
+      user.cart = cart;
+    } else {
+      console.log('tried to create duplicate user', username, email);
+    }
 
     return user;
   } catch (error) {
