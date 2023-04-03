@@ -109,7 +109,8 @@ cartProductsRouter.patch('/:cart_product_id', async (req, res, next) => {
 cartProductsRouter.post('/:product_id', async (req, res, next) => {
   try {
     const user_id = req.user.id;
-    const { quantity } = req.body;
+    let { quantity } = req.body;
+    quantity = Number(quantity);
     let { product_id } = req.params;
     product_id = Number(product_id);
 
