@@ -1,10 +1,21 @@
+const NUMBER_OF_FAKE_USERS = 100;
+const NUMBER_OF_FAKE_PRODUCTS = 100;
+const MAX_NUMBER_OF_CART_PRODUCTS = 5;
+
 const client = require('./client');
 const {
   createUser,
   createProduct,
   createCategory,
   addCartItem,
+  getAllUsers,
+  getCartItems,
 } = require('./');
+
+const { faker } = require('@faker-js/faker');
+
+// Update to change all users and products
+faker.seed(100);
 
 async function dropTables() {
   try {
@@ -115,6 +126,32 @@ async function createInitialUsers() {
       email: 'joshua@email.com',
     });
 
+    const user_promises = [];
+
+    for (let i = 0; i < NUMBER_OF_FAKE_USERS - 3; i += 1) {
+      const fakeFirstName = faker.name.firstName();
+      const fakeLastName = faker.name.lastName();
+
+      const is_admin = faker.datatype.number(100) < 5;
+
+      user_promises.push(
+        createUser({
+          name: faker.name.fullName({
+            firstName: fakeFirstName,
+            lastName: fakeLastName,
+          }),
+          username: faker.internet.userName(fakeFirstName, fakeLastName),
+          password: 'fakeUser123',
+          email: faker.internet.email(fakeFirstName, fakeLastName),
+          is_admin,
+        })
+      );
+    }
+
+    const allPromises = await Promise.all(user_promises);
+
+    console.log('user promises', allPromises[30]);
+
     console.log('Finished creating users');
   } catch (error) {
     console.error('ERROR creating initial users');
@@ -126,6 +163,8 @@ async function createInitialCategories() {
   try {
     console.log('creating category');
     await createCategory({ category_name: 'candle' });
+    await createCategory({ category_name: 'diffuser' });
+    await createCategory({ category_name: 'car' });
 
     console.log('finished creating category');
   } catch (error) {}
@@ -138,7 +177,7 @@ async function createInitialProducts() {
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
       price: '$10.99',
-      pic_url: 'https://picsum.photos/200/300',
+      pic_url: faker.image.food(300, 200, true),
       size: 'S',
       inventory: 3,
       category_id: 1,
@@ -150,7 +189,7 @@ async function createInitialProducts() {
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
       price: '$24.99',
-      pic_url: 'https://picsum.photos/200/300',
+      pic_url: faker.image.food(300, 200, true),
       size: 'M',
       inventory: 3,
       category_id: 1,
@@ -162,13 +201,49 @@ async function createInitialProducts() {
       name: 'Blue Jasmine and Royal Fern',
       description: 'Smells like blue jasmine and royal fern.',
       price: '$40.99',
-      pic_url: 'https://picsum.photos/200/300',
+      pic_url: faker.image.food(300, 200, true),
       size: 'L',
       inventory: 3,
       category_id: 1,
       color: 'Blue',
       fragrance: 'Blue Jasmine',
     });
+
+    const product_promises = [];
+
+    for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
+      const randomNum = faker.datatype.number(100);
+      let size;
+
+      if (randomNum < 33) {
+        size = 'S';
+      } else if (randomNum < 66) {
+        size = 'M';
+      } else {
+        size = 'L';
+      }
+
+      product_promises.push(
+        createProduct({
+          name: faker.commerce.productName(),
+          description: faker.commerce.productDescription(),
+          price: faker.commerce.price(9, 50, 2, '$'),
+          pic_url: faker.image.food(300, 200, true),
+          size,
+          inventory: faker.datatype.number(5),
+          category_id: faker.datatype.number({
+            min: 1,
+            max: 3,
+          }),
+          color: faker.color.human(),
+          fragrance: faker.commerce.productAdjective(),
+        })
+      );
+    }
+
+    const allPromises = await Promise.all(product_promises);
+
+    console.log('product promises', allPromises[30]);
 
     console.log('Finished create initial products');
   } catch (error) {
@@ -180,29 +255,45 @@ async function createInitialProducts() {
 async function createInitialCartProducts() {
   try {
     console.log('Creating initial cart products');
-    await addCartItem({
-      cart_id: 1,
-      product_id: 1,
-      quantity: 2,
-    });
 
-    await addCartItem({
-      cart_id: 2,
-      product_id: 1,
-      quantity: 1,
-    });
+    const cart_product_promises = [];
+    const allUsers = await getAllUsers();
 
-    await addCartItem({
-      cart_id: 2,
-      product_id: 2,
-      quantity: 3,
-    });
+    const cart_promises = [];
 
-    await addCartItem({
-      cart_id: 2,
-      product_id: 3,
-      quantity: 5,
-    });
+    for (let i = 0; i < allUsers.length; i += 1) {
+      const user = allUsers[i];
+      cart_promises.push(getCartItems({ user_id: user.id, is_active: true }));
+    }
+
+    const allCarts = await Promise.all(cart_promises);
+
+    // Will create some duplicate combos of cart and cart products
+    // That's ok, the DB function will just ignore them
+    for (let i = 0; i < allUsers.length; i += 1) {
+      const user = allUsers[i];
+      const cart = allCarts[i];
+
+      for (let i = 0; i < MAX_NUMBER_OF_CART_PRODUCTS; i += 1) {
+        cart_product_promises.push(
+          await addCartItem({
+            cart_id: cart.id,
+            product_id: faker.datatype.number({
+              min: 1,
+              max: NUMBER_OF_FAKE_PRODUCTS,
+            }),
+            quantity: faker.datatype.number({
+              min: 1,
+              max: 5,
+            }),
+          })
+        );
+      }
+    }
+
+    const allPromises = await Promise.all(cart_product_promises);
+
+    console.log('cart product promises', allPromises[30]);
 
     console.log('Finished creating initial cart products');
   } catch (error) {

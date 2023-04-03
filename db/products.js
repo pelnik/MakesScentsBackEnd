@@ -1,4 +1,4 @@
-const client = require("./client");
+const client = require('./client');
 
 // create and return the new product
 async function createProduct({
@@ -13,8 +13,8 @@ async function createProduct({
   fragrance,
 }) {
   try {
-    if (!(size === "S" || size === "M" || size === "L")) {
-      throw new Error("Size is not S, M, or L");
+    if (!(size === 'S' || size === 'M' || size === 'L')) {
+      throw new Error('Size is not S, M, or L');
     }
 
     const {
@@ -39,9 +39,13 @@ async function createProduct({
       ]
     );
 
+    if (!product) {
+      console.log('tried to create a duplicate product', name, size);
+    }
+
     return product;
   } catch (error) {
-    console.error("error creating product", error);
+    console.error('error creating product', error);
     throw error;
   }
 }
@@ -58,7 +62,7 @@ async function getAllProducts() {
 
     return rows;
   } catch (error) {
-    console.error("error getting all products", error);
+    console.error('error getting all products', error);
     throw error;
   }
 }
@@ -66,44 +70,50 @@ async function getAllProducts() {
 // return a single product by its id
 async function getProductById(id) {
   try {
-    const { rows: [product] } = await client.query(
+    const {
+      rows: [product],
+    } = await client.query(
       `
       SELECT *
       FROM products
       WHERE id=$1;
       `,
-    [id])
+      [id]
+    );
 
     return product;
   } catch (error) {
-    console.error("error getting product by id", error);
-    throw error
+    console.error('error getting product by id', error);
+    throw error;
   }
 }
 
 // return a single product by its name
 async function getProductByName(name) {
   try {
-    const { rows: [product] } = await client.query(
+    const {
+      rows: [product],
+    } = await client.query(
       `
       SELECT *
       FROM products
       WHERE name=$1;
       `,
-    [name]);
+      [name]
+    );
 
     return product;
   } catch (error) {
-    console.error("error getting product by name", error);
-    throw error
+    console.error('error getting product by name', error);
+    throw error;
   }
 }
 
 // update product detail except for id and return updated product
-async function updateProduct({id, ...fields}) {
+async function updateProduct({ id, ...fields }) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}" = $${index + 1}`)
-    .join(", ");
+    .join(', ');
 
   if (setString.length === 0) {
     return;
@@ -121,16 +131,16 @@ async function updateProduct({id, ...fields}) {
       `,
       Object.values(fields)
     );
-    console.log("product", product)
+    console.log('product', product);
 
     return product;
   } catch (error) {
-    console.error("error updating product");
+    console.error('error updating product');
     throw error;
   }
 }
 
-// remove a product by its id  
+// remove a product by its id
 async function destroyProduct(id) {
   try {
     await client.query(
@@ -143,7 +153,7 @@ async function destroyProduct(id) {
       `
     );
   } catch (error) {
-    console.error("error deleting product", error);
+    console.error('error deleting product', error);
     throw error;
   }
 }
