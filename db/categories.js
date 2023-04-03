@@ -21,6 +21,23 @@ async function createCategory({ category_name }) {
   }
 }
 
+async function getAllCategories() {
+  try {
+    const { rows } = await client.query(
+      `
+      SELECT *
+      FROM categories;
+      `
+    );
+
+    return rows;
+  } catch (error) {
+    console.error('error getting all categories', error);
+    throw error;
+  }
+}
+
 module.exports = {
   createCategory,
+  getAllCategories,
 };
