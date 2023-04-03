@@ -80,6 +80,16 @@ cartProductsRouter.patch('/:cart_product_id', async (req, res, next) => {
         name: 'InvalidCartProduct',
         message: 'That cart product does not exist.',
       });
+    } else if (typeof quantity !== 'number') {
+      next({
+        name: 'InvalidQuantityDataType',
+        message: 'Quantity must be of type number',
+      });
+    } else if (quantity < 1) {
+      next({
+        name: 'InvalidQuantityValue',
+        message: 'Quantity cannot be less than 1',
+      });
     } else if (cartProduct && cartProduct.user_id === user_id) {
       const updatedItem = await updateCartItem({
         cart_product_id,
