@@ -10,6 +10,7 @@
     "start:local": "PORT=3001 nodemon index.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -19,7 +20,6 @@
     "pg": "^8.10.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
     "nodemon": "^2.0.22"
   }
 }
