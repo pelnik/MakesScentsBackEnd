@@ -2,7 +2,7 @@ const express = require('express');
 const categoriesRouter = express.Router();
 
 const { requireAdminUser } = require('./utils');
-const { createCategory } = require('../db/categories');
+const { createCategory, getAllCategories } = require('../db/categories');
 
 // Close old cart and get new one
 categoriesRouter.post('/', requireAdminUser, async (req, res, next) => {
@@ -34,6 +34,21 @@ categoriesRouter.post('/', requireAdminUser, async (req, res, next) => {
       name,
       message,
     });
+  }
+});
+
+// GET /api/categories
+categoriesRouter.get('/', async (req, res, next) => {
+  try {
+    const categoriesList = await getAllCategories();
+
+    res.send({
+      success: true,
+      message: 'These are all of categories.',
+      categories: categoriesList,
+    });
+  } catch ({ name, message }) {
+    next({ name, message });
   }
 });
 
