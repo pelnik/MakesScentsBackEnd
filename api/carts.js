@@ -65,14 +65,23 @@ cartsRouter.patch('/:cart_id', requireAdminUser, async (req, res, next) => {
 });
 
 // Close old cart and get new one
-cartsRouter.post('/', requireUser, async (req, res, next) => {
+cartsRouter.post('/:cart_id', requireUser, async (req, res, next) => {
   try {
     const user_id = req.user.id;
     const { status } = req.body;
+    let { cart_id } = req.params;
+    cart_id = Number(cart_id);
 
     const ALLOWED_STATUSES = ['Cancelled', 'Completed'];
 
-    if (ALLOWED_STATUSES.includes(status)) {
+    const currentCart = await getCartItems({ user_id, is_active: true });
+
+    if (currentCart.id !== cart_id) {
+      next({
+        name: 'WrongCartError',
+        message: 'Cart ID sent is incorrect',
+      });
+    } else if (ALLOWED_STATUSES.includes(status)) {
       const { oldCart, newCart } = await removeOldCarts({ user_id, status });
 
       res.send({
