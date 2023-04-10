@@ -10,6 +10,7 @@ const {
   addCartItem,
   getAllUsers,
   getCartItems,
+  getAllProducts,
 } = require('./');
 
 const { faker } = require('@faker-js/faker');
@@ -723,7 +724,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Lemon Grove',
       description:
-        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+        'Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.',
       price: '13.99',
       pic_url: '/Media/candle_5.jpg',
       size: 'S',
@@ -736,7 +737,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Lemon Grove',
       description:
-        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+        'Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.',
       price: '21.99',
       pic_url: '/Media/candle_5.jpg',
       size: 'M',
@@ -749,7 +750,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Lemon Grove',
       description:
-        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+        'Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.',
       price: '36.99',
       pic_url: '/Media/candle_5.jpg',
       size: 'L',
@@ -762,7 +763,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Revival Midnight',
       description:
-        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+        'Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.',
       price: '14.99',
       pic_url: '/Media/candle_6.jpg',
       size: 'S',
@@ -775,7 +776,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Revival Midnight',
       description:
-        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+        'Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.',
       price: '27.99',
       pic_url: '/Media/candle_6.jpg',
       size: 'M',
@@ -788,7 +789,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Revival Midnight',
       description:
-        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+        'Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.',
       price: '40.99',
       pic_url: '/Media/candle_6.jpg',
       size: 'L',
@@ -801,7 +802,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Cozy Cabin',
       description:
-        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+        'Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.',
       price: '15.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'S',
@@ -814,7 +815,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Cozy Cabin',
       description:
-        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+        'Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.',
       price: '25.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'M',
@@ -827,7 +828,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Cozy Cabin',
       description:
-        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+        'Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.',
       price: '40.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'L',
@@ -842,7 +843,7 @@ async function createInitialProducts() {
       description:
         'The use of birch wood in the diffuser not only provides a natural and organic look, but it also adds an earthy scent to the aroma of the essential oils. Birch wood is known for its natural antimicrobial properties, which can help purify the air and create a healthier environment.',
       price: '$49.99',
-      pic_url: '/Media/Diffuser 2',
+      pic_url: '/Media/Diffuser 2.jpg',
       size: 'N',
       inventory: 8,
       category_id: 2,
@@ -855,7 +856,7 @@ async function createInitialProducts() {
       description:
         "Using a dark wood diffuser is an excellent way to enjoy the benefits of aromatherapy, which can help promote relaxation, reduce stress, and improve overall well-being. The diffuser's sleek and stylish design can complement any room in your home or office while adding a touch of natural beauty.",
       price: '$49.99',
-      pic_url: '/Media/Diffuser 1',
+      pic_url: '/Media/Diffuser 1.jpg',
       size: 'N',
       inventory: 6,
       category_id: 2,
@@ -980,42 +981,141 @@ async function createInitialProducts() {
       fragrance: 'Floral and Musk',
     });
 
+    await createProduct({
+      name: 'Honey Nut Car Diffuser',
+      description:
+        'Transform your daily commute into a sweet and indulgent experience with our "Honey Nut" car diffuser scent. This fragrance offers the perfect balance of warm honey and rich, nutty tones, creating a deliciously inviting aroma that will fill your car with warmth and comfort. The honey notes in the scent provide a natural sweetness that is perfectly complemented by the nutty undertones, creating a luxurious and indulgent aroma that will soothe and uplift your senses. Our Honey Nut car diffuser scent is perfect for those who want to transform their daily commute into a calming and luxurious experience. ',
+      price: '$15.99',
+      pic_url: '/Media/Car 2.jpg',
+      size: 'N',
+      inventory: 5,
+      category_id: 3,
+      color: 'Yellow',
+      fragrance: 'Honey Nut',
+    });
 
-    const product_promises = [];
+    await createProduct({
+      name: 'Lost In The Louvre Car Diffuser',
+      description:
+        '"Lost in the Louvre" car diffuser scent is a luxurious fragrance that evokes the grandeur and elegance of the world-famous Parisian museum. This scent is inspired by the beautiful art and architecture of the Louvre, and it combines notes of bergamot, jasmine, and sandalwood to create a sophisticated and enchanting aroma. The bergamot notes provide a fresh and uplifting scent, while the jasmine adds a delicate floral touch, and the sandalwood offers a warm and woody base that evokes the timeless elegance of the Louvre. Our "Lost in the Louvre" car diffuser scent is perfect for those who want to add a touch of luxury and sophistication to their daily commute. With its elegant and enchanting aroma, this fragrance will transform your car into a luxurious oasis, creating a sense of calm and tranquility on even the most stressful of drives.',
+      price: '$15.99',
+      pic_url: '/Media/Car 3.jpg',
+      size: 'N',
+      inventory: 7,
+      category_id: 3,
+      color: 'Red',
+      fragrance: 'Jasmine and Sandalwood',
+    });
 
-    for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
-      const randomNum = faker.datatype.number(100);
-      let size;
+    await createProduct({
+      name: 'Buddha Pear Car Diffuser',
+      description:
+        '"Buddha Pear" car diffuser scent is a fresh and uplifting fragrance that combines the crispness of pear with the grounding notes of sandalwood and vanilla. This scent is inspired by the peaceful and serene nature of Buddha, and it evokes a sense of calm and tranquility. The juicy sweetness of pear is perfectly balanced by the warm and grounding notes of sandalwood and vanilla, creating a well-rounded and harmonious aroma. Our "Buddha Pear" car diffuser scent is perfect for those seeking a refreshing and calming fragrance to transform their daily commute. With its serene and peaceful qualities, this scent will help you find a sense of balance and relaxation even during the busiest of drives.',
+      price: '$15.99',
+      pic_url: '/Media/Car 4.jpg',
+      size: 'N',
+      inventory: 7,
+      category_id: 3,
+      color: 'Pink',
+      fragrance: 'Pear and Vanilla',
+    });
 
-      if (randomNum < 33) {
-        size = 'S';
-      } else if (randomNum < 66) {
-        size = 'M';
-      } else {
-        size = 'L';
+    await createProduct({
+      name: 'Next Stop: Coffee Car Diffuser',
+      description:
+        '"Next Stop: Coffee" car diffuser scent is a rich and invigorating fragrance that combines the bold aroma of freshly brewed coffee with the sweet and comforting notes of vanilla and caramel. This scent is perfect for coffee lovers who want to infuse their daily commute with the energizing and comforting qualities of their favorite drink. The rich coffee notes provide an invigorating and stimulating aroma, while the sweet vanilla and caramel notes add a comforting and indulgent touch. Our "Next Stop: Coffee" car diffuser scent is perfect for those who want to start their day on a high note. With its rich and energizing aroma, this fragrance will awaken your senses and help you feel ready to take on the day.',
+      price: '$15.99',
+      pic_url: '/Media/Car 5.jpg',
+      size: 'N',
+      inventory: 4,
+      category_id: 3,
+      color: 'Brown',
+      fragrance: 'Coffee and Caramel',
+    });
+
+    await createProduct({
+      name: 'Wick and Bar Combo Car Diffusers',
+      description:
+        'This Wick and Bar combo pack comes with 3 unique scents. "Clean Cotton" for those who enjoy the simple and refreshing aroma of freshly cleaned clothes. "Lavender" for those who seek a relaxing and tranquil aroma to transform their daily commute. "Santal + Coconut" for those who want to infuse their daily commute with a sense of warmth and indulgence. The combination of sandalwood and coconut creates a well-rounded and harmonious aroma that evokes a sense of luxury and sophistication. ',
+      price: '$29.99',
+      pic_url: '/Media/Car 7.jpg',
+      size: 'N',
+      inventory: 8,
+      category_id: 3,
+      color: 'Yellow',
+      fragrance: 'Clean Cotton, Lavender, Santal + Coconut',
+    });
+
+    await createProduct({
+      name: 'Autumn Leaves Car Diffuser',
+      description:
+        '"Autumn Leaves" car diffuser scent is a warm and inviting fragrance that captures the essence of autumn with its crisp and earthy aroma. This scent is perfect for those who want to infuse their daily commute with the cozy and comforting qualities of fall. The warm and spicy notes of cinnamon and clove blend perfectly with the earthy and woody notes of oak and patchouli, creating a well-rounded and harmonious fragrance that evokes the feeling of walking through a forest of fallen leaves. Our "Autumn Leaves" car diffuser scent is perfect for those who want to create a cozy and welcoming atmosphere in their car. With its warm and comforting qualities, this fragrance will help you feel relaxed and at ease on even the most hectic of drives. ',
+      price: '$15.99',
+      pic_url: '/Media/Car 8.jpg',
+      size: 'N',
+      inventory: 6,
+      category_id: 3,
+      color: 'Yellow',
+      fragrance: 'Autumn Leaves',
+    });
+
+    await createProduct({
+      name: 'Kiss of the Forest Car Diffuser',
+      description:
+        '"Kiss of the Forest" car diffuser scent is a fresh and invigorating fragrance that captures the essence of a walk through a forest after a light rain. This scent is perfect for those who enjoy the fresh and crisp aroma of the great outdoors. The woody and earthy notes of cedarwood and pine blend perfectly with the fresh and herbaceous notes of eucalyptus and mint, creating a well-balanced and harmonious fragrance that evokes the feeling of being surrounded by nature. Our "Kiss of the Forest" car diffuser scent is perfect for those who want to infuse their daily commute with the revitalizing and rejuvenating qualities of nature. With its fresh and invigorating qualities, this fragrance will help you feel energized and refreshed on even the most tiring of drives.',
+      price: '$15.99',
+      pic_url: '/Media/Car 6.jpg',
+      size: 'N',
+      inventory: 3,
+      category_id: 3,
+      color: 'Brown',
+      fragrance: 'Cedarwood and Pine',
+    });
+
+    if (process.env.NODE_ENV === 'SEED_DEV') {
+      const product_promises = [];
+
+      const all_products = await getAllProducts();
+      const number_of_products = all_products.length;
+
+      for (
+        let i = 0;
+        i < NUMBER_OF_FAKE_PRODUCTS - number_of_products;
+        i += 1
+      ) {
+        const randomNum = faker.datatype.number(100);
+        let size;
+
+        if (randomNum < 33) {
+          size = 'S';
+        } else if (randomNum < 66) {
+          size = 'M';
+        } else {
+          size = 'L';
+        }
+
+        product_promises.push(
+          createProduct({
+            name: faker.commerce.productName(),
+            description: faker.commerce.productDescription(),
+            price: faker.commerce.price(9, 50, 2, '$'),
+            pic_url: faker.image.food(300, 200, true),
+            size,
+            inventory: faker.datatype.number(5),
+            category_id: faker.datatype.number({
+              min: 1,
+              max: 3,
+            }),
+            color: faker.color.human(),
+            fragrance: faker.commerce.productAdjective(),
+          })
+        );
       }
 
-      product_promises.push(
-        createProduct({
-          name: faker.commerce.productName(),
-          description: faker.commerce.productDescription(),
-          price: faker.commerce.price(9, 50, 2, '$'),
-          pic_url: faker.image.food(300, 200, true),
-          size,
-          inventory: faker.datatype.number(5),
-          category_id: faker.datatype.number({
-            min: 1,
-            max: 3,
-          }),
-          color: faker.color.human(),
-          fragrance: faker.commerce.productAdjective(),
-        })
-      );
+      const allPromises = await Promise.all(product_promises);
+
+      console.log('product promises', allPromises[30]);
     }
-
-    const allPromises = await Promise.all(product_promises);
-
-    console.log('product promises', allPromises[30]);
 
     console.log('Finished create initial products');
   } catch (error) {
@@ -1040,6 +1140,9 @@ async function createInitialCartProducts() {
 
     const allCarts = await Promise.all(cart_promises);
 
+    const all_products = await getAllProducts();
+    const number_of_products = all_products.length;
+
     // Will create some duplicate combos of cart and cart products
     // That's ok, the DB function will just ignore them
     for (let i = 0; i < allUsers.length; i += 1) {
@@ -1052,7 +1155,7 @@ async function createInitialCartProducts() {
             cart_id: cart.id,
             product_id: faker.datatype.number({
               min: 1,
-              max: NUMBER_OF_FAKE_PRODUCTS,
+              max: number_of_products,
             }),
             quantity: faker.datatype.number({
               min: 1,
