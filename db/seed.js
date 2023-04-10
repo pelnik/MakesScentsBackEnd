@@ -163,9 +163,9 @@ async function createInitialUsers() {
 async function createInitialCategories() {
   try {
     console.log('creating category');
-    await createCategory({ category_name: 'candle' });
-    await createCategory({ category_name: 'diffuser' });
-    await createCategory({ category_name: 'car' });
+    await createCategory({ category_name: 'Candle' });
+    await createCategory({ category_name: 'Diffuser' });
+    await createCategory({ category_name: 'Car' });
 
     console.log('finished creating category');
   } catch (error) {}
