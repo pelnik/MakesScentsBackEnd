@@ -10,6 +10,7 @@ const {
   addCartItem,
   getAllUsers,
   getCartItems,
+  getAllProducts,
 } = require('./');
 
 const { faker } = require('@faker-js/faker');
@@ -707,41 +708,50 @@ async function createInitialProducts() {
       fragrance: 'Rich Oud Wood, Smoky Leather, and Warm Spices',
     });
 
-    const product_promises = [];
+    if (process.env.NODE_ENV === 'SEED_DEV') {
+      const product_promises = [];
 
-    for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
-      const randomNum = faker.datatype.number(100);
-      let size;
+      const all_products = await getAllProducts();
+      const number_of_products = all_products.length;
 
-      if (randomNum < 33) {
-        size = 'S';
-      } else if (randomNum < 66) {
-        size = 'M';
-      } else {
-        size = 'L';
+      for (
+        let i = 0;
+        i < NUMBER_OF_FAKE_PRODUCTS - number_of_products;
+        i += 1
+      ) {
+        const randomNum = faker.datatype.number(100);
+        let size;
+
+        if (randomNum < 33) {
+          size = 'S';
+        } else if (randomNum < 66) {
+          size = 'M';
+        } else {
+          size = 'L';
+        }
+
+        product_promises.push(
+          createProduct({
+            name: faker.commerce.productName(),
+            description: faker.commerce.productDescription(),
+            price: faker.commerce.price(9, 50, 2, '$'),
+            pic_url: faker.image.food(300, 200, true),
+            size,
+            inventory: faker.datatype.number(5),
+            category_id: faker.datatype.number({
+              min: 1,
+              max: 3,
+            }),
+            color: faker.color.human(),
+            fragrance: faker.commerce.productAdjective(),
+          })
+        );
       }
 
-      product_promises.push(
-        createProduct({
-          name: faker.commerce.productName(),
-          description: faker.commerce.productDescription(),
-          price: faker.commerce.price(9, 50, 2, '$'),
-          pic_url: faker.image.food(300, 200, true),
-          size,
-          inventory: faker.datatype.number(5),
-          category_id: faker.datatype.number({
-            min: 1,
-            max: 3,
-          }),
-          color: faker.color.human(),
-          fragrance: faker.commerce.productAdjective(),
-        })
-      );
+      const allPromises = await Promise.all(product_promises);
+
+      console.log('product promises', allPromises[30]);
     }
-
-    const allPromises = await Promise.all(product_promises);
-
-    console.log('product promises', allPromises[30]);
 
     console.log('Finished create initial products');
   } catch (error) {
@@ -766,6 +776,9 @@ async function createInitialCartProducts() {
 
     const allCarts = await Promise.all(cart_promises);
 
+    const all_products = await getAllProducts();
+    const number_of_products = all_products.length;
+
     // Will create some duplicate combos of cart and cart products
     // That's ok, the DB function will just ignore them
     for (let i = 0; i < allUsers.length; i += 1) {
@@ -778,7 +791,7 @@ async function createInitialCartProducts() {
             cart_id: cart.id,
             product_id: faker.datatype.number({
               min: 1,
-              max: NUMBER_OF_FAKE_PRODUCTS,
+              max: number_of_products,
             }),
             quantity: faker.datatype.number({
               min: 1,
