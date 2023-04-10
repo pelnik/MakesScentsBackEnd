@@ -497,8 +497,8 @@ async function createInitialProducts() {
       category_id: 1,
       color: 'Black and White',
       fragrance: 'Citrus and Floral',
-    })
-    
+    });
+
     await createProduct({
       name: 'Vanilla and Coconut',
       description:
@@ -686,7 +686,7 @@ async function createInitialProducts() {
       description:
         'This luxurious diffuser is designed to elevate your space with its exquisite fragrance and sophisticated design. The scent of spiced vanilla is warm and comforting, with notes of sweet vanilla, cinnamon, and clove, creating a cozy and inviting aroma that fills the air with a sense of warmth and nostalgia. The glass bottle is carefully selected for its quality and beauty, and the whiskey-colored liquid adds a touch of opulence and allure to your decor. Simply insert the reeds into the bottle, and let the captivating aroma diffuse naturally, enveloping your space with a delightful scent that lingers for weeks. With its premium quality, unique fragrance, and elegant design, this spiced vanilla-scented diffuser is a perfect choice for creating a cozy and inviting atmosphere in your home or office, and a thoughtful gift option for those who appreciate the warmth and comfort of vanilla-based scents.',
       price: '$26.99',
-      pic_url: '/Media/diffuser-1.jpeg',
+      pic_url: '/Media/diffuser-1.jpg',
       size: 'N',
       inventory: 10,
       category_id: 2,
