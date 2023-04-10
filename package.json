@@ -8,7 +8,8 @@
     "seed:dev": "NODE_ENV=SEED_DEV node ./db/seed.js",
     "start": "node index.js",
     "start:dev": "nodemon index.js",
-    "start:local": "PORT=3001 nodemon index.js"
+    "start:local": "PORT=3001 nodemon index.js",
+    "stripe:test": "node ./stripe/test.js"
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
@@ -18,7 +19,8 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "stripe": "^12.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
