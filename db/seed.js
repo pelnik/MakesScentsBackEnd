@@ -724,7 +724,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Lemon Grove',
       description:
-        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+        'Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.',
       price: '13.99',
       pic_url: '/Media/candle_5.jpg',
       size: 'S',
@@ -737,7 +737,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Lemon Grove',
       description:
-        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+        'Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.',
       price: '21.99',
       pic_url: '/Media/candle_5.jpg',
       size: 'M',
@@ -750,7 +750,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Lemon Grove',
       description:
-        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+        'Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.',
       price: '36.99',
       pic_url: '/Media/candle_5.jpg',
       size: 'L',
@@ -763,7 +763,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Revival Midnight',
       description:
-        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+        'Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.',
       price: '14.99',
       pic_url: '/Media/candle_6.jpg',
       size: 'S',
@@ -776,7 +776,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Revival Midnight',
       description:
-        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+        'Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.',
       price: '27.99',
       pic_url: '/Media/candle_6.jpg',
       size: 'M',
@@ -789,7 +789,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Revival Midnight',
       description:
-        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+        'Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.',
       price: '40.99',
       pic_url: '/Media/candle_6.jpg',
       size: 'L',
@@ -802,7 +802,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Cozy Cabin',
       description:
-        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+        'Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.',
       price: '15.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'S',
@@ -815,7 +815,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Cozy Cabin',
       description:
-        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+        'Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.',
       price: '25.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'M',
@@ -828,7 +828,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Cozy Cabin',
       description:
-        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+        'Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.',
       price: '40.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'L',
@@ -993,22 +993,6 @@ async function createInitialProducts() {
       color: 'Brown',
       fragrance: 'Cedarwood and Pine',
     });
-
-
-
-
-    const product_promises = [];
-
-    for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
-      const randomNum = faker.datatype.number(100);
-      let size;
-
-      if (randomNum < 33) {
-        size = 'S';
-      } else if (randomNum < 66) {
-        size = 'M';
-      } else {
-        size = 'L';
 
     if (process.env.NODE_ENV === 'SEED_DEV') {
       const product_promises = [];
