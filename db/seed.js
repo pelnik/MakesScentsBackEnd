@@ -288,25 +288,12 @@ async function createInitialProducts() {
     });
 
     await createProduct({
-      name: 'Vanilla and Amber',
-      description:
-        'Experience the epitome of luxury with our exquisite candle, featuring a captivating scent of warm vanilla and amber, housed in a sleek and stylish container. This premium candle is hand-poured with high-quality white wax, creating a clean and elegant aesthetic that complements any home decor. The alluring scent of vanilla and amber fills the air, creating a cozy and inviting ambiance that soothes the senses and elevates your space. Light up this candle and let the rich and comforting fragrance envelop your senses, creating a warm and welcoming atmosphere for relaxation or entertaining.',
-      price: '$42.99',
-      pic_url: '/Media/candle-2.jpeg',
-      size: 'L',
-      inventory: 3,
-      category_id: 1,
-      color: 'Black and white',
-      fragrance: 'Vanilla and Amber',
-    });
-
-    await createProduct({
       name: 'Vanilla and Coconut',
       description:
         'This exquisite candle features a warm and inviting scent of vanilla and coconut, reminiscent of a serene tropical getaway. The high-quality wax is carefully hand-poured in a harmonious blend of tan and cream hues, creating a visually appealing aesthetic that complements any home decor style. Light up this candle and let the soothing fragrance of vanilla and coconut fill the air, creating a sense of calm and relaxation. The elegant design of the container adds a touch of understated elegance to your home, making it a perfect centerpiece for your living room, bedroom, or bathroom. With its captivating scent and stylish design, this candle is a perfect choice for those who appreciate the finer things in life and seek to create a serene and inviting atmosphere in their homes.',
       price: '$42.99',
       pic_url: '/Media/candle-2.jpeg',
-      size: 'L',
+      size: 'S',
       inventory: 3,
       category_id: 1,
       color: 'Black and white',
