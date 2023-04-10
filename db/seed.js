@@ -472,6 +472,7 @@ async function createInitialProducts() {
       color: 'Black and White',
       fragrance: 'Citrus and Floral',
     });
+
     await createProduct({
       name: 'Midnight Escape',
       description:
@@ -484,6 +485,7 @@ async function createInitialProducts() {
       color: 'Black and White',
       fragrance: 'Citrus and Floral',
     });
+
     await createProduct({
       name: 'Midnight Escape',
       description:
@@ -495,7 +497,8 @@ async function createInitialProducts() {
       category_id: 1,
       color: 'Black and White',
       fragrance: 'Citrus and Floral',
-      
+    })
+    
     await createProduct({
       name: 'Vanilla and Coconut',
       description:
