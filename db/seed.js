@@ -399,13 +399,156 @@ async function createInitialProducts() {
       name: 'Vanilla and Coconut',
       description:
         'This exquisite candle features a warm and inviting scent of vanilla and coconut, reminiscent of a serene tropical getaway. The high-quality wax is carefully hand-poured in a harmonious blend of tan and cream hues, creating a visually appealing aesthetic that complements any home decor style. Light up this candle and let the soothing fragrance of vanilla and coconut fill the air, creating a sense of calm and relaxation. The elegant design of the container adds a touch of understated elegance to your home, making it a perfect centerpiece for your living room, bedroom, or bathroom. With its captivating scent and stylish design, this candle is a perfect choice for those who appreciate the finer things in life and seek to create a serene and inviting atmosphere in their homes.',
-      price: '$42.99',
-      pic_url: '/Media/candle-2.jpeg',
+      price: '$8.99',
+      pic_url: '/Media/candle-3.jpeg',
       size: 'S',
       inventory: 3,
       category_id: 1,
-      color: 'Black and white',
+      color: 'Tan and cream',
       fragrance: 'Vanilla and Amber',
+    });
+
+    await createProduct({
+      name: 'Vanilla and Coconut',
+      description:
+        'This exquisite candle features a warm and inviting scent of vanilla and coconut, reminiscent of a serene tropical getaway. The high-quality wax is carefully hand-poured in a harmonious blend of tan and cream hues, creating a visually appealing aesthetic that complements any home decor style. Light up this candle and let the soothing fragrance of vanilla and coconut fill the air, creating a sense of calm and relaxation. The elegant design of the container adds a touch of understated elegance to your home, making it a perfect centerpiece for your living room, bedroom, or bathroom. With its captivating scent and stylish design, this candle is a perfect choice for those who appreciate the finer things in life and seek to create a serene and inviting atmosphere in their homes.',
+      price: '$17.99',
+      pic_url: '/Media/candle-3.jpeg',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'Tan and cream',
+      fragrance: 'Vanilla and Coconut',
+    });
+
+    await createProduct({
+      name: 'Vanilla and Coconut',
+      description:
+        'This exquisite candle features a warm and inviting scent of vanilla and coconut, reminiscent of a serene tropical getaway. The high-quality wax is carefully hand-poured in a harmonious blend of tan and cream hues, creating a visually appealing aesthetic that complements any home decor style. Light up this candle and let the soothing fragrance of vanilla and coconut fill the air, creating a sense of calm and relaxation. The elegant design of the container adds a touch of understated elegance to your home, making it a perfect centerpiece for your living room, bedroom, or bathroom. With its captivating scent and stylish design, this candle is a perfect choice for those who appreciate the finer things in life and seek to create a serene and inviting atmosphere in their homes.',
+      price: '$35.99',
+      pic_url: '/Media/candle-3.jpeg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Tan and cream',
+      fragrance: 'Vanilla and Coconut',
+    });
+
+    await createProduct({
+      name: 'Sandalwood and Vanilla',
+      description:
+        'Introducing our exquisite candle, housed in a charming brown container with a crisp white label, featuring premium white wax and a soothing scent of sandalwood and vanilla. This luxurious and indulgent candle is perfect for those who appreciate the rich and serene aroma of sandalwood, combined with the warmth and sweetness of vanilla. The high-quality wax is carefully hand-poured, creating a clean and elegant aesthetic that complements any home decor style. Light up this candle and let the enchanting scent of sandalwood and vanilla fill the air, creating a calming and serene ambiance that promotes relaxation and tranquility.',
+      price: '$12.99',
+      pic_url: '/Media/candle-4.jpeg',
+      size: 'S',
+      inventory: 1,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Sandalwood and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Sandalwood and Vanilla',
+      description:
+        'Introducing our exquisite candle, housed in a charming brown container with a crisp white label, featuring premium white wax and a soothing scent of sandalwood and vanilla. This luxurious and indulgent candle is perfect for those who appreciate the rich and serene aroma of sandalwood, combined with the warmth and sweetness of vanilla. The high-quality wax is carefully hand-poured, creating a clean and elegant aesthetic that complements any home decor style. Light up this candle and let the enchanting scent of sandalwood and vanilla fill the air, creating a calming and serene ambiance that promotes relaxation and tranquility.',
+      price: '$23.99',
+      pic_url: '/Media/candle-4.jpeg',
+      size: 'M',
+      inventory: 1,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Sandalwood and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Sandalwood and Vanilla',
+      description:
+        'Introducing our exquisite candle, housed in a charming brown container with a crisp white label, featuring premium white wax and a soothing scent of sandalwood and vanilla. This luxurious and indulgent candle is perfect for those who appreciate the rich and serene aroma of sandalwood, combined with the warmth and sweetness of vanilla. The high-quality wax is carefully hand-poured, creating a clean and elegant aesthetic that complements any home decor style. Light up this candle and let the enchanting scent of sandalwood and vanilla fill the air, creating a calming and serene ambiance that promotes relaxation and tranquility.',
+      price: '$44.99',
+      pic_url: '/Media/candle-4.jpeg',
+      size: 'L',
+      inventory: 1,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Sandalwood and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Orange Creamsicle',
+      description:
+        'This delightful candle features a high-quality wax that is carefully hand-poured, creating a clean and minimalist aesthetic that complements any home decor style. The invigorating scent of orange creamsicle fills the air with notes of juicy oranges and creamy vanilla, reminiscent of a nostalgic summer treat. Light up this candle and let the refreshing aroma transport you to carefree summer days, creating a cheerful and uplifting ambiance in your space. The clear container allows for a beautiful play of light, casting a warm and inviting glow when lit. With its captivating scent and modern design, this orange creamsicle-scented candle is a perfect choice for adding a touch of zest and vibrancy to your home, and a delightful gift option for those who appreciate unique and refreshing fragrances.',
+      price: '$9.99',
+      pic_url: '/Media/candle-5.jpeg',
+      size: 'S',
+      inventory: 3,
+      category_id: 1,
+      color: 'Orange cream',
+      fragrance: 'Orange Creamsicle',
+    });
+
+    await createProduct({
+      name: 'Orange Creamsicle',
+      description:
+        'This delightful candle features a high-quality wax that is carefully hand-poured, creating a clean and minimalist aesthetic that complements any home decor style. The invigorating scent of orange creamsicle fills the air with notes of juicy oranges and creamy vanilla, reminiscent of a nostalgic summer treat. Light up this candle and let the refreshing aroma transport you to carefree summer days, creating a cheerful and uplifting ambiance in your space. The clear container allows for a beautiful play of light, casting a warm and inviting glow when lit. With its captivating scent and modern design, this orange creamsicle-scented candle is a perfect choice for adding a touch of zest and vibrancy to your home, and a delightful gift option for those who appreciate unique and refreshing fragrances.',
+      price: '$19.99',
+      pic_url: '/Media/candle-5.jpeg',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'Orange cream',
+      fragrance: 'Orange Creamsicle',
+    });
+
+    await createProduct({
+      name: 'Orange Creamsicle',
+      description:
+        'This delightful candle features a high-quality wax that is carefully hand-poured, creating a clean and minimalist aesthetic that complements any home decor style. The invigorating scent of orange creamsicle fills the air with notes of juicy oranges and creamy vanilla, reminiscent of a nostalgic summer treat. Light up this candle and let the refreshing aroma transport you to carefree summer days, creating a cheerful and uplifting ambiance in your space. The clear container allows for a beautiful play of light, casting a warm and inviting glow when lit. With its captivating scent and modern design, this orange creamsicle-scented candle is a perfect choice for adding a touch of zest and vibrancy to your home, and a delightful gift option for those who appreciate unique and refreshing fragrances.',
+      price: '$29.99',
+      pic_url: '/Media/candle-5.jpeg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Orange cream',
+      fragrance: 'Orange Creamsicle',
+    });
+
+    await createProduct({
+      name: 'Fresh Linen',
+      description:
+        'This classic and timeless candle features a high-quality wax that is carefully hand-poured, creating a clean and minimalist aesthetic that complements any home decor style. The crisp and refreshing scent of fresh linen evokes the feeling of freshly laundered linens, with hints of cleanliness, comfort, and tranquility. Light up this candle and let the inviting aroma fill the air, creating a serene and relaxing ambiance in your space. The white container and wax add a touch of purity and simplicity to your home, blending seamlessly with any color palette or style.',
+      price: '$9.99',
+      pic_url: '/Media/candle-6.jpeg',
+      size: 'S',
+      inventory: 3,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Fresh Linen',
+    });
+
+    await createProduct({
+      name: 'Fresh Linen',
+      description:
+        'This classic and timeless candle features a high-quality wax that is carefully hand-poured, creating a clean and minimalist aesthetic that complements any home decor style. The crisp and refreshing scent of fresh linen evokes the feeling of freshly laundered linens, with hints of cleanliness, comfort, and tranquility. Light up this candle and let the inviting aroma fill the air, creating a serene and relaxing ambiance in your space. The white container and wax add a touch of purity and simplicity to your home, blending seamlessly with any color palette or style.',
+      price: '$21.99',
+      pic_url: '/Media/candle-6.jpeg',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Fresh Linen',
+    });
+
+    await createProduct({
+      name: 'Fresh Linen',
+      description:
+        'This classic and timeless candle features a high-quality wax that is carefully hand-poured, creating a clean and minimalist aesthetic that complements any home decor style. The crisp and refreshing scent of fresh linen evokes the feeling of freshly laundered linens, with hints of cleanliness, comfort, and tranquility. Light up this candle and let the inviting aroma fill the air, creating a serene and relaxing ambiance in your space. The white container and wax add a touch of purity and simplicity to your home, blending seamlessly with any color palette or style.',
+      price: '$32.99',
+      pic_url: '/Media/candle-6.jpeg',
+      size: 'L',
+      inventory: 0,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Fresh Linen',
     });
 
     const product_promises = [];
