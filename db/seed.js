@@ -173,41 +173,152 @@ async function createInitialCategories() {
 async function createInitialProducts() {
   try {
     console.log('Creating initial products');
+
     await createProduct({
       name: 'Blue Jasmine and Royal Fern',
-      description: 'Smells like blue jasmine and royal fern.',
+      description: 'Together, blue jasmine and royal fern create a scent that is both floral and green, making it perfect for those who love the outdoors and the beauty of nature. It is a fragrance that is both elegant and refreshing, evoking a sense of tranquility and harmony.',
       price: '$10.99',
-      pic_url: faker.image.food(300, 200, true),
+      pic_url: '/Media/Candle 1.jpg',
       size: 'S',
       inventory: 3,
       category_id: 1,
       color: 'Blue',
-      fragrance: 'Blue Jasmine',
+      fragrance: 'Blue Jasmine and Royal Fern',
     });
 
     await createProduct({
       name: 'Blue Jasmine and Royal Fern',
-      description: 'Smells like blue jasmine and royal fern.',
+      description: 'Together, blue jasmine and royal fern create a scent that is both floral and green, making it perfect for those who love the outdoors and the beauty of nature. It is a fragrance that is both elegant and refreshing, evoking a sense of tranquility and harmony.',
       price: '$24.99',
-      pic_url: faker.image.food(300, 200, true),
+      pic_url: '/Media/Candle 1.jpg',
       size: 'M',
       inventory: 3,
       category_id: 1,
       color: 'Blue',
-      fragrance: 'Blue Jasmine',
+      fragrance: 'Blue Jasmine and Royal Fern',
     });
 
     await createProduct({
       name: 'Blue Jasmine and Royal Fern',
-      description: 'Smells like blue jasmine and royal fern.',
+      description: 'Together, blue jasmine and royal fern create a scent that is both floral and green, making it perfect for those who love the outdoors and the beauty of nature. It is a fragrance that is both elegant and refreshing, evoking a sense of tranquility and harmony.',
       price: '$40.99',
-      pic_url: faker.image.food(300, 200, true),
+      pic_url: '/Media/Candle 1.jpg',
       size: 'L',
       inventory: 3,
       category_id: 1,
       color: 'Blue',
-      fragrance: 'Blue Jasmine',
+      fragrance: 'Blue Jasmine and Royal Fern',
     });
+
+    await createProduct({
+      name: 'Clementine and Mint',
+      description: 'Together, clementine and mint create a scent that is bright, refreshing, and energizing. It is perfect for those who love citrus scents and want a fragrance that is both invigorating and calming.',
+      price: '$10.99',
+      pic_url: '/Media/Candle 2.jpg',
+      size: 'S',
+      inventory: 3,
+      category_id: 1,
+      color: 'Orange',
+      fragrance: 'Clementine and Mint',
+    });
+    
+    await createProduct({
+      name: 'Clementine and Mint',
+      description: 'Together, clementine and mint create a scent that is bright, refreshing, and energizing. It is perfect for those who love citrus scents and want a fragrance that is both invigorating and calming.',
+      price: '$24.99',
+      pic_url: '/Media/Candle 2.jpg',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'Orange',
+      fragrance: 'Clementine and Mint',
+    });
+    
+    await createProduct({
+      name: 'Clementine and Mint',
+      description: 'Together, clementine and mint create a scent that is bright, refreshing, and energizing. It is perfect for those who love citrus scents and want a fragrance that is both invigorating and calming.',
+      price: '$40.99',
+      pic_url: '/Media/Candle 2.jpg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Orange',
+      fragrance: 'Clementine and Mint',
+    });
+
+    await createProduct({
+      name: 'Cashmere and Vanilla',
+      description: 'Together, cashmere and vanilla create a scent that is both indulgent and inviting. It is a fragrance that is perfect for those who love the feeling of being wrapped in a soft and cozy blanket, evoking a sense of relaxation and comfort. It is a scent that is both warm and comforting, making it perfect for use during the colder months.',
+      price: '$10.99',
+      pic_url: '/Media/Candle 3.jpg',
+      size: 'S',
+      inventory: 3,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Cashmere and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Cashmere and Vanilla',
+      description: 'Together, cashmere and vanilla create a scent that is both indulgent and inviting. It is a fragrance that is perfect for those who love the feeling of being wrapped in a soft and cozy blanket, evoking a sense of relaxation and comfort. It is a scent that is both warm and comforting, making it perfect for use during the colder months.',
+      price: '$24.99',
+      pic_url: '/Media/Candle 3.jpg',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Cashmere and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Cashmere and Vanilla',
+      description: 'Together, cashmere and vanilla create a scent that is both indulgent and inviting. It is a fragrance that is perfect for those who love the feeling of being wrapped in a soft and cozy blanket, evoking a sense of relaxation and comfort. It is a scent that is both warm and comforting, making it perfect for use during the colder months.',
+      price: '$40.99',
+      pic_url: '/Media/Candle 3.jpg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Cashmere and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Eucalyptus Mist',
+      description: 'Together, eucalyptus and mist create a fragrance that is both refreshing and calming. It is perfect for those who seek a fragrance that clears the mind and revitalizes the senses. It is a scent that is ideal for use in the bathroom or in a spa-like setting, creating a soothing and tranquil atmosphere.',
+      price: '$10.99',
+      pic_url: '/Media/Candle 4.jpg',
+      size: 'S',
+      inventory: 3,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Eucalyptus Mist',
+    });
+
+    await createProduct({
+      name: 'Eucalyptus Mist',
+      description: 'Together, eucalyptus and mist create a fragrance that is both refreshing and calming. It is perfect for those who seek a fragrance that clears the mind and revitalizes the senses. It is a scent that is ideal for use in the bathroom or in a spa-like setting, creating a soothing and tranquil atmosphere.',
+      price: '$24.99',
+      pic_url: '/Media/Candle 4.jpg',
+      size: 'M',
+      inventory: 3,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Eucalyptus Mist',
+    });
+
+    await createProduct({
+      name: 'Eucalyptus Mist',
+      description: 'Together, eucalyptus and mist create a fragrance that is both refreshing and calming. It is perfect for those who seek a fragrance that clears the mind and revitalizes the senses. It is a scent that is ideal for use in the bathroom or in a spa-like setting, creating a soothing and tranquil atmosphere.',
+      price: '40.99',
+      pic_url: '/Media/Candle 4.jpg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Eucalyptus Mist',
+    });
+
+
 
     const product_promises = [];
 
