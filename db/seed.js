@@ -949,7 +949,7 @@ async function createInitialProducts() {
       price: '$19.99',
       pic_url: '/Media/diffuser_4.jpg',
       size: 'N',
-      inventory: 4,
+      inventory: 0,
       category_id: 2,
       color: 'White',
       fragrance: 'Floral and Fresh',
