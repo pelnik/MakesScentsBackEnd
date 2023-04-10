@@ -300,6 +300,45 @@ async function createInitialProducts() {
       fragrance: 'Vanilla and Amber',
     });
 
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$18.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'S',
+      inventory: 4,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$27.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+    
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$41.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'L',
+      inventory: 0,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
     const product_promises = [];
 
     for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
