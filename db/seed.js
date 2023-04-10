@@ -422,6 +422,84 @@ async function createInitialProducts() {
     });
 
     await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$18.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'S',
+      inventory: 4,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$27.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$41.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'L',
+      inventory: 0,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$13.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'S',
+      inventory: 2,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    });
+
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$22.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    });
+
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$32.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'L',
+      inventory: 5,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    })
+    
+    await createProduct({
       name: 'Vanilla and Coconut',
       description:
         'This exquisite candle features a warm and inviting scent of vanilla and coconut, reminiscent of a serene tropical getaway. The high-quality wax is carefully hand-poured in a harmonious blend of tan and cream hues, creating a visually appealing aesthetic that complements any home decor style. Light up this candle and let the soothing fragrance of vanilla and coconut fill the air, creating a sense of calm and relaxation. The elegant design of the container adds a touch of understated elegance to your home, making it a perfect centerpiece for your living room, bedroom, or bathroom. With its captivating scent and stylish design, this candle is a perfect choice for those who appreciate the finer things in life and seek to create a serene and inviting atmosphere in their homes.',
@@ -588,6 +666,45 @@ async function createInitialProducts() {
       category_id: 2,
       color: 'Dark Brown',
       fragrance: 'Dark Wood',
+    });
+
+    await createProduct({
+      name: 'Black Cedarwood',
+      description:
+        'This unique car air freshener is designed to elevate your driving experience with its luxurious fragrance and modern design. The scent of black cedarwood is sophisticated and alluring, with notes of smoky wood, warm spices, and a hint of leather, creating an ambiance of refined elegance in your car. The clear container allows for easy visibility of the fragrance level, while the black wood cap adds a touch of natural and earthy appeal. Simply hang or clip this car air freshener in your vehicle and enjoy the long-lasting scent that will make your car smell inviting and enchanting.',
+      price: '$22.99',
+      pic_url: '/Media/car-1.jpeg',
+      size: 'N',
+      inventory: 10,
+      category_id: 3,
+      color: 'White',
+      fragrance: 'Black Cedarwood',
+    });
+
+    await createProduct({
+      name: 'Vanilla, Cinnamon, and Clove Diffuser',
+      description:
+        'This luxurious diffuser is designed to elevate your space with its exquisite fragrance and sophisticated design. The scent of spiced vanilla is warm and comforting, with notes of sweet vanilla, cinnamon, and clove, creating a cozy and inviting aroma that fills the air with a sense of warmth and nostalgia. The glass bottle is carefully selected for its quality and beauty, and the whiskey-colored liquid adds a touch of opulence and allure to your decor. Simply insert the reeds into the bottle, and let the captivating aroma diffuse naturally, enveloping your space with a delightful scent that lingers for weeks. With its premium quality, unique fragrance, and elegant design, this spiced vanilla-scented diffuser is a perfect choice for creating a cozy and inviting atmosphere in your home or office, and a thoughtful gift option for those who appreciate the warmth and comfort of vanilla-based scents.',
+      price: '$26.99',
+      pic_url: '/Media/diffuser-1.jpeg',
+      size: 'N',
+      inventory: 10,
+      category_id: 2,
+      color: 'Brown',
+      fragrance: 'Vanilla, Cinnamon, and Clove',
+    });
+
+    await createProduct({
+      name: 'Rich Oud Wood, Smoky Leather, and Warm Spice Diffuser',
+      description:
+        'Infused with a captivating scent that matches the allure of the bottle, this diffuser is a statement piece that enhances any room with its premium fragrance. The scent is a perfect blend of rich oud wood, smoky leather, and warm spices, creating an irresistible aroma that is both exotic and inviting. The darkened glass bottle is not only visually stunning, but also carefully chosen for its quality and durability.',
+      price: '$25.99',
+      pic_url: '/Media/diffuser-2.jpeg',
+      size: 'N',
+      inventory: 10,
+      category_id: 2,
+      color: 'Smoky',
+      fragrance: 'Rich Oud Wood, Smoky Leather, and Warm Spices',
     });
 
     const product_promises = [];

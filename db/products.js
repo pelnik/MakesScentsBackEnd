@@ -13,7 +13,7 @@ async function createProduct({
   fragrance,
 }) {
   try {
-    if (!(size === 'S' || size === 'M' || size === 'L')) {
+    if (!(size === 'S' || size === 'M' || size === 'L' || size === 'N')) {
       throw new Error('Size is not S, M, or L');
     }
 
