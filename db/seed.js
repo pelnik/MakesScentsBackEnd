@@ -643,6 +643,201 @@ async function createInitialProducts() {
     });
 
     await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '10.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'S',
+      inventory: 4,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '19.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'M',
+      inventory: 1,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '30.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '9.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '18.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '28.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '13.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '21.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'M',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '36.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'L',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '14.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '27.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'M',
+      inventory: 0,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '40.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '15.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'S',
+      inventory: 0,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '25.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'M',
+      inventory: 4,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '40.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
       name: 'Birch Wood Diffuser',
       description:
         'The use of birch wood in the diffuser not only provides a natural and organic look, but it also adds an earthy scent to the aroma of the essential oils. Birch wood is known for its natural antimicrobial properties, which can help purify the air and create a healthier environment.',
