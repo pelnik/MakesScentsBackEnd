@@ -642,6 +642,124 @@ async function createInitialProducts() {
       fragrance: 'Fresh Linen',
     });
 
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '10.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'S',
+      inventory: 4,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '19.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'M',
+      inventory: 1,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '30.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '9.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '18.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '28.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '13.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '21.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'M',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '36.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'L',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+
     const product_promises = [];
 
     for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
