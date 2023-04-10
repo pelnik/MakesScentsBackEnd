@@ -14,7 +14,7 @@ async function createProduct({
 }) {
   try {
     if (!(size === 'S' || size === 'M' || size === 'L' || size === 'N')) {
-      throw new Error('Size is not S, M, or L');
+      throw new Error('Size is not S, M, L, or N');
     }
 
     const {
