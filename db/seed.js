@@ -325,7 +325,7 @@ async function createInitialProducts() {
       color: 'Brown',
       fragrance: 'Caramel and Vanilla',
     });
-    
+
     await createProduct({
       name: 'Caramel Comfort',
       description:
@@ -337,6 +337,43 @@ async function createInitialProducts() {
       category_id: 1,
       color: 'Brown',
       fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$13.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'S',
+      inventory: 2,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    });
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$22.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    });
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$32.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'L',
+      inventory: 5,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
     });
 
     const product_promises = [];
