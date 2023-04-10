@@ -798,6 +798,45 @@ async function createInitialProducts() {
       fragrance: 'Fresh and Earthy',
     });
 
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '15.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'S',
+      inventory: 0,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '25.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'M',
+      inventory: 4,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '40.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
 
     const product_promises = [];
 
