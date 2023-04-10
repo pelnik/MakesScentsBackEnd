@@ -832,7 +832,7 @@ async function createInitialProducts() {
       price: '40.99',
       pic_url: '/Media/candle_7.jpg',
       size: 'L',
-      inventory: 2,
+      inventory: 0,
       category_id: 1,
       color: 'White',
       fragrance: 'Woody and Spice',
@@ -901,6 +901,84 @@ async function createInitialProducts() {
       category_id: 2,
       color: 'Smoky',
       fragrance: 'Rich Oud Wood, Smoky Leather, and Warm Spices',
+    });
+
+    await createProduct({
+      name: 'Mediterranean Breeze',
+      description:
+        'Infused with a captivating scent that matches the allure of the bottle, the fragrance blend is refreshing and invigorating scent that captures the essence of the Mediterranean coast. This fragrance combines notes of citrusy lemon and bergamot, with a hint of fresh thyme and a touch of salty sea breeze. The result is a crisp and clean aroma that will transport you to the sun-kissed shores of the Mediterranean.',
+      price: '$22.99',
+      pic_url: '/Media/diffuser_1.jpg',
+      size: 'N',
+      inventory: 8,
+      category_id: 2,
+      color: 'Brown',
+      fragrance: 'Fresh and Herbal',
+    });
+
+    await createProduct({
+      name: 'Coastal Breeze',
+      description:
+        'Our signature fragrance blend is a fresh and crisp scent that captures the essence of a coastal retreat. This fragrance combines notes of salty ocean breeze, with a hint of sweet jasmine and a touch of citrusy bergamot. The result is a refreshing and uplifting aroma that will transport you to a peaceful seaside escape.',
+      price: '$20.99',
+      pic_url: '/Media/diffuser_2.jpg',
+      size: 'N',
+      inventory: 9,
+      category_id: 2,
+      color: 'Light Brown',
+      fragrance: 'Citrus Bergamot',
+    });
+
+    await createProduct({
+      name: 'Fireside Cheer',
+      description:
+        "This signature blend is a warm and cozy fragrance that captures the essence of a crackling fire on a winter's night. This scent combines notes of rich cedarwood, smoky birch, and spicy cinnamon, with a touch of sweet vanilla and warm musk. The result is a comforting and inviting aroma that will make you feel right at home.",
+      price: '$20.99',
+      pic_url: '/Media/diffuser_3.jpg',
+      size: 'N',
+      inventory: 6,
+      category_id: 2,
+      color: 'Brown',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Spring Bloom',
+      description:
+        "This blend is a delicate and sophisticated fragrance that captures the essence of a fresh spring garden. This scent combines notes of soft jasmine, sweet honeysuckle, and bright citrus, with a touch of musky cedarwood and earthy vetiver. The result is a floral and refreshing aroma that will uplift your mood and brighten your day. It is inspired by the beauty and freshness of a blooming flower. This diffuser is perfect for adding a touch of elegance and sophistication to your home decor, and for creating a calming and refreshing ambiance.",
+      price: '$19.99',
+      pic_url: '/Media/diffuser_4.jpg',
+      size: 'N',
+      inventory: 4,
+      category_id: 2,
+      color: 'White',
+      fragrance: 'Floral and Fresh',
+    });
+
+    await createProduct({
+      name: 'Sunburst',
+      description:
+        "Our signature scent is a bright and refreshing fragrance that captures the essence of a sunny summer day. This scent combines notes of juicy mandarin, zesty lemon, and sweet orange blossom, with a hint of warm vanilla and musky sandalwood. The result is a delightful and uplifting aroma that will energize your senses and brighten your mood.",
+      price: '$24.99',
+      pic_url: '/Media/diffuser_5.jpg',
+      size: 'N',
+      inventory: 10,
+      category_id: 2,
+      color: 'Yellow',
+      fragrance: 'Citrus and Musk',
+    });
+
+    await createProduct({
+      name: 'Rose Petals',
+      description:
+        "Our signature scent is a delicate and feminine fragrance that captures the essence of fresh roses in bloom. This scent combines notes of fragrant rose petals, sweet jasmine, and soft lily of the valley, with a hint of warm sandalwood and musk. The result is a soothing and enchanting aroma that will transport you to a blooming garden on a warm summer day.",
+      price: '$23.99',
+      pic_url: '/Media/diffuser_6.jpg',
+      size: 'N',
+      inventory: 3,
+      category_id: 2,
+      color: 'Pink',
+      fragrance: 'Floral and Musk',
     });
 
     await createProduct({
