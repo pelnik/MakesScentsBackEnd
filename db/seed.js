@@ -497,8 +497,8 @@ async function createInitialProducts() {
       category_id: 1,
       color: 'Black and White',
       fragrance: 'Citrus and Floral',
-    })
-    
+    });
+
     await createProduct({
       name: 'Vanilla and Coconut',
       description:
@@ -837,6 +837,70 @@ async function createInitialProducts() {
       fragrance: 'Woody and Spice',
     });
 
+    await createProduct({
+      name: 'Birch Wood Diffuser',
+      description:
+        'The use of birch wood in the diffuser not only provides a natural and organic look, but it also adds an earthy scent to the aroma of the essential oils. Birch wood is known for its natural antimicrobial properties, which can help purify the air and create a healthier environment.',
+      price: '$49.99',
+      pic_url: '/Media/Diffuser 2',
+      size: 'N',
+      inventory: 8,
+      category_id: 2,
+      color: 'Light Brown',
+      fragrance: 'Birch Wood',
+    });
+
+    await createProduct({
+      name: 'Dark Wood Diffuser',
+      description:
+        "Using a dark wood diffuser is an excellent way to enjoy the benefits of aromatherapy, which can help promote relaxation, reduce stress, and improve overall well-being. The diffuser's sleek and stylish design can complement any room in your home or office while adding a touch of natural beauty.",
+      price: '$49.99',
+      pic_url: '/Media/Diffuser 1',
+      size: 'N',
+      inventory: 6,
+      category_id: 2,
+      color: 'Dark Brown',
+      fragrance: 'Dark Wood',
+    });
+
+    await createProduct({
+      name: 'Black Cedarwood',
+      description:
+        'This unique car air freshener is designed to elevate your driving experience with its luxurious fragrance and modern design. The scent of black cedarwood is sophisticated and alluring, with notes of smoky wood, warm spices, and a hint of leather, creating an ambiance of refined elegance in your car. The clear container allows for easy visibility of the fragrance level, while the black wood cap adds a touch of natural and earthy appeal. Simply hang or clip this car air freshener in your vehicle and enjoy the long-lasting scent that will make your car smell inviting and enchanting.',
+      price: '$22.99',
+      pic_url: '/Media/car-1.jpeg',
+      size: 'N',
+      inventory: 10,
+      category_id: 3,
+      color: 'White',
+      fragrance: 'Black Cedarwood',
+    });
+
+    await createProduct({
+      name: 'Vanilla, Cinnamon, and Clove Diffuser',
+      description:
+        'This luxurious diffuser is designed to elevate your space with its exquisite fragrance and sophisticated design. The scent of spiced vanilla is warm and comforting, with notes of sweet vanilla, cinnamon, and clove, creating a cozy and inviting aroma that fills the air with a sense of warmth and nostalgia. The glass bottle is carefully selected for its quality and beauty, and the whiskey-colored liquid adds a touch of opulence and allure to your decor. Simply insert the reeds into the bottle, and let the captivating aroma diffuse naturally, enveloping your space with a delightful scent that lingers for weeks. With its premium quality, unique fragrance, and elegant design, this spiced vanilla-scented diffuser is a perfect choice for creating a cozy and inviting atmosphere in your home or office, and a thoughtful gift option for those who appreciate the warmth and comfort of vanilla-based scents.',
+      price: '$26.99',
+      pic_url: '/Media/diffuser-1.jpg',
+      size: 'N',
+      inventory: 10,
+      category_id: 2,
+      color: 'Brown',
+      fragrance: 'Vanilla, Cinnamon, and Clove',
+    });
+
+    await createProduct({
+      name: 'Rich Oud Wood, Smoky Leather, and Warm Spice Diffuser',
+      description:
+        'Infused with a captivating scent that matches the allure of the bottle, this diffuser is a statement piece that enhances any room with its premium fragrance. The scent is a perfect blend of rich oud wood, smoky leather, and warm spices, creating an irresistible aroma that is both exotic and inviting. The darkened glass bottle is not only visually stunning, but also carefully chosen for its quality and durability.',
+      price: '$25.99',
+      pic_url: '/Media/diffuser-2.jpeg',
+      size: 'N',
+      inventory: 10,
+      category_id: 2,
+      color: 'Smoky',
+      fragrance: 'Rich Oud Wood, Smoky Leather, and Warm Spices',
+    });
 
     const product_promises = [];
 
