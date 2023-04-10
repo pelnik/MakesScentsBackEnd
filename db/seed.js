@@ -10,6 +10,7 @@ const {
   addCartItem,
   getAllUsers,
   getCartItems,
+  getAllProducts,
 } = require('./');
 
 const { faker } = require('@faker-js/faker');
@@ -497,8 +498,8 @@ async function createInitialProducts() {
       category_id: 1,
       color: 'Black and White',
       fragrance: 'Citrus and Floral',
-    })
-    
+    });
+
     await createProduct({
       name: 'Vanilla and Coconut',
       description:
@@ -643,6 +644,201 @@ async function createInitialProducts() {
     });
 
     await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '10.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'S',
+      inventory: 4,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '19.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'M',
+      inventory: 1,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Meadow Fresh',
+      description:
+        'The signature fragrance blend features a delicate balance of sweet honey and tangy lemon, accented with herbaceous notes of thyme and a hint of musk. This unique blend of scents creates a serene and uplifting ambiance, perfect for any occasion. Its uplifting scent and warm glow will transform any room into a serene haven of peace and tranquility.',
+      price: '30.99',
+      pic_url: '/Media/candle_3.jpg',
+      size: 'L',
+      inventory: 3,
+      category_id: 1,
+      color: 'Green',
+      fragrance: 'Fresh and Herbaceous',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '9.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '18.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Pink Grapefruit Burst',
+      description:
+        "The signature fragrance blend combines juicy and tart grapefruit with sweet notes of mandarin and a hint of peach, creating a mouth-watering and energizing aroma that's perfect for any time of day. The subtle, yet sophisticated scent is perfect for creating a refreshing and uplifting atmosphere in your home.",
+      price: '28.99',
+      pic_url: '/Media/candle_4.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'Pink',
+      fragrance: 'Fruity',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '13.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '21.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'M',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Lemon Grove',
+      description:
+        "Introducing our newest addition to our candle collection - fragrance blend features zesty and tart lemon notes, balanced with a subtle hint of bergamot and a touch of herbaceous thyme. The aroma is reminiscent of a freshly squeezed lemonade on a warm summer day, creating a warm and inviting atmosphere in any room. This candle is perfect for creating a refreshing and invigorating ambiance during your morning routine or for brightening up your living space.",
+      price: '36.99',
+      pic_url: '/Media/candle_5.jpg',
+      size: 'L',
+      inventory: 5,
+      category_id: 1,
+      color: 'Yellow',
+      fragrance: 'Citrus',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '14.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '27.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'M',
+      inventory: 0,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '40.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '15.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'S',
+      inventory: 0,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '25.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'M',
+      inventory: 4,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
+      name: 'Cozy Cabin',
+      description:
+        "Our signature fragrance blend combines earthy and woody notes of cedarwood and sandalwood, with a hint of spicy cinnamon and a touch of sweet vanilla. Hand-poured with natural soy wax, this candle features a warm and inviting fragrance that will transport you to a cozy log cabin in the woods.",
+      price: '40.99',
+      pic_url: '/Media/candle_7.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'White',
+      fragrance: 'Woody and Spice',
+    });
+
+    await createProduct({
       name: 'Birch Wood Diffuser',
       description:
         'The use of birch wood in the diffuser not only provides a natural and organic look, but it also adds an earthy scent to the aroma of the essential oils. Birch wood is known for its natural antimicrobial properties, which can help purify the air and create a healthier environment.',
@@ -686,7 +882,7 @@ async function createInitialProducts() {
       description:
         'This luxurious diffuser is designed to elevate your space with its exquisite fragrance and sophisticated design. The scent of spiced vanilla is warm and comforting, with notes of sweet vanilla, cinnamon, and clove, creating a cozy and inviting aroma that fills the air with a sense of warmth and nostalgia. The glass bottle is carefully selected for its quality and beauty, and the whiskey-colored liquid adds a touch of opulence and allure to your decor. Simply insert the reeds into the bottle, and let the captivating aroma diffuse naturally, enveloping your space with a delightful scent that lingers for weeks. With its premium quality, unique fragrance, and elegant design, this spiced vanilla-scented diffuser is a perfect choice for creating a cozy and inviting atmosphere in your home or office, and a thoughtful gift option for those who appreciate the warmth and comfort of vanilla-based scents.',
       price: '$26.99',
-      pic_url: '/Media/diffuser-1.jpeg',
+      pic_url: '/Media/diffuser-1.jpg',
       size: 'N',
       inventory: 10,
       category_id: 2,
@@ -813,29 +1009,51 @@ async function createInitialProducts() {
         size = 'M';
       } else {
         size = 'L';
+
+    if (process.env.NODE_ENV === 'SEED_DEV') {
+      const product_promises = [];
+
+      const all_products = await getAllProducts();
+      const number_of_products = all_products.length;
+
+      for (
+        let i = 0;
+        i < NUMBER_OF_FAKE_PRODUCTS - number_of_products;
+        i += 1
+      ) {
+        const randomNum = faker.datatype.number(100);
+        let size;
+
+        if (randomNum < 33) {
+          size = 'S';
+        } else if (randomNum < 66) {
+          size = 'M';
+        } else {
+          size = 'L';
+        }
+
+        product_promises.push(
+          createProduct({
+            name: faker.commerce.productName(),
+            description: faker.commerce.productDescription(),
+            price: faker.commerce.price(9, 50, 2, '$'),
+            pic_url: faker.image.food(300, 200, true),
+            size,
+            inventory: faker.datatype.number(5),
+            category_id: faker.datatype.number({
+              min: 1,
+              max: 3,
+            }),
+            color: faker.color.human(),
+            fragrance: faker.commerce.productAdjective(),
+          })
+        );
       }
 
-      product_promises.push(
-        createProduct({
-          name: faker.commerce.productName(),
-          description: faker.commerce.productDescription(),
-          price: faker.commerce.price(9, 50, 2, '$'),
-          pic_url: faker.image.food(300, 200, true),
-          size,
-          inventory: faker.datatype.number(5),
-          category_id: faker.datatype.number({
-            min: 1,
-            max: 3,
-          }),
-          color: faker.color.human(),
-          fragrance: faker.commerce.productAdjective(),
-        })
-      );
+      const allPromises = await Promise.all(product_promises);
+
+      console.log('product promises', allPromises[30]);
     }
-
-    const allPromises = await Promise.all(product_promises);
-
-    console.log('product promises', allPromises[30]);
 
     console.log('Finished create initial products');
   } catch (error) {
@@ -860,6 +1078,9 @@ async function createInitialCartProducts() {
 
     const allCarts = await Promise.all(cart_promises);
 
+    const all_products = await getAllProducts();
+    const number_of_products = all_products.length;
+
     // Will create some duplicate combos of cart and cart products
     // That's ok, the DB function will just ignore them
     for (let i = 0; i < allUsers.length; i += 1) {
@@ -872,7 +1093,7 @@ async function createInitialCartProducts() {
             cart_id: cart.id,
             product_id: faker.datatype.number({
               min: 1,
-              max: NUMBER_OF_FAKE_PRODUCTS,
+              max: number_of_products,
             }),
             quantity: faker.datatype.number({
               min: 1,
