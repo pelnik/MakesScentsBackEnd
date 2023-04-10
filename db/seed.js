@@ -564,6 +564,32 @@ async function createInitialProducts() {
       fragrance: 'Fresh Linen',
     });
 
+    await createProduct({
+      name: 'Birch Wood Diffuser',
+      description:
+        'The use of birch wood in the diffuser not only provides a natural and organic look, but it also adds an earthy scent to the aroma of the essential oils. Birch wood is known for its natural antimicrobial properties, which can help purify the air and create a healthier environment.',
+      price: '$49.99',
+      pic_url: '/Media/Diffuser 2',
+      size: 'N',
+      inventory: 8,
+      category_id: 2,
+      color: 'Light Brown',
+      fragrance: 'Birch Wood',
+    });
+
+    await createProduct({
+      name: 'Dark Wood Diffuser',
+      description:
+        "Using a dark wood diffuser is an excellent way to enjoy the benefits of aromatherapy, which can help promote relaxation, reduce stress, and improve overall well-being. The diffuser's sleek and stylish design can complement any room in your home or office while adding a touch of natural beauty.",
+      price: '$49.99',
+      pic_url: '/Media/Diffuser 1',
+      size: 'N',
+      inventory: 6,
+      category_id: 2,
+      color: 'Dark Brown',
+      fragrance: 'Dark Wood',
+    });
+
     const product_promises = [];
 
     for (let i = 0; i < NUMBER_OF_FAKE_PRODUCTS - 3; i += 1) {
