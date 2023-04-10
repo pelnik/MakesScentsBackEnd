@@ -422,6 +422,81 @@ async function createInitialProducts() {
     });
 
     await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$18.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'S',
+      inventory: 4,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$27.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Caramel Comfort',
+      description:
+        'This exquisite candle features a crafted fragrance blend combines sweet caramel notes with rich vanilla and a touch of spicy cinnamon, creating a decadent aroma that will delight your senses.',
+      price: '$41.99',
+      pic_url: '/Media/candle_1.jpg',
+      size: 'L',
+      inventory: 0,
+      category_id: 1,
+      color: 'Brown',
+      fragrance: 'Caramel and Vanilla',
+    });
+
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$13.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'S',
+      inventory: 2,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    });
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$22.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'M',
+      inventory: 2,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+    });
+    await createProduct({
+      name: 'Midnight Escape',
+      description:
+        'Our signature scent blend features a combination of fresh citrusy notes of bergamot and zesty lemon, balanced with floral hints of jasmine and lily of the valley. The scent is then anchored by the warmth and depth of cedarwood and patchouli, creating a unique and captivating aroma that will transport you to a serene oasis of tranquility.',
+      price: '$32.99',
+      pic_url: '/Media/candle_2.jpg',
+      size: 'L',
+      inventory: 5,
+      category_id: 1,
+      color: 'Black and White',
+      fragrance: 'Citrus and Floral',
+      
+    await createProduct({
       name: 'Vanilla and Coconut',
       description:
         'This exquisite candle features a warm and inviting scent of vanilla and coconut, reminiscent of a serene tropical getaway. The high-quality wax is carefully hand-poured in a harmonious blend of tan and cream hues, creating a visually appealing aesthetic that complements any home decor style. Light up this candle and let the soothing fragrance of vanilla and coconut fill the air, creating a sense of calm and relaxation. The elegant design of the container adds a touch of understated elegance to your home, making it a perfect centerpiece for your living room, bedroom, or bathroom. With its captivating scent and stylish design, this candle is a perfect choice for those who appreciate the finer things in life and seek to create a serene and inviting atmosphere in their homes.',
