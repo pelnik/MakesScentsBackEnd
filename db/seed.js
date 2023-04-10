@@ -759,6 +759,45 @@ async function createInitialProducts() {
       fragrance: 'Citrus',
     });
 
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '14.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'S',
+      inventory: 5,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '27.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'M',
+      inventory: 0,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
+    await createProduct({
+      name: 'Revival Midnight',
+      description:
+        "Our signature fragrance blend combines crisp and invigorating notes of eucalyptus and peppermint, with a hint of soothing lavender and a touch of earthy sage. The result is a refreshing and revitalizing aroma that is perfect for creating a calming and uplifting atmosphere in your home.",
+      price: '40.99',
+      pic_url: '/Media/candle_6.jpg',
+      size: 'L',
+      inventory: 2,
+      category_id: 1,
+      color: 'Green and Black',
+      fragrance: 'Fresh and Earthy',
+    });
+
 
     const product_promises = [];
 
