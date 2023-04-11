@@ -83,6 +83,7 @@ async function createTables() {
         color VARCHAR(255) NOT NULL,
         fragrance VARCHAR(255) NOT NULL,
         stripe_product_id VARCHAR(255) UNIQUE NOT NULL,
+        stripe_price_id VARCHAR(255) UNIQUE NOT NULL,
         UNIQUE(name, size)
       );
     `);

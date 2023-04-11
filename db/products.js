@@ -19,21 +19,22 @@ async function createProduct({
       throw new Error('Size is not S, M, L, or N');
     }
 
-    const stripeProductId = await makeStripeProduct({
-      product_name: `${name} ${size}`,
-      description,
-      pic_url,
-      unit_amount: price,
-    });
+    const { product: stripeProduct, price: stripePrice } =
+      await makeStripeProduct({
+        product_name: `${name} ${size}`,
+        description,
+        pic_url,
+        unit_amount: price,
+      });
 
-    console.log('stripe product id', stripeProductId);
+    console.log('stripe product id', stripeProduct.id);
 
     const {
       rows: [product],
     } = await client.query(
       `
-        INSERT INTO products(name, description, price, pic_url, size, inventory, category_id, color, fragrance, stripe_product_id)
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        INSERT INTO products(name, description, price, pic_url, size, inventory, category_id, color, fragrance, stripe_product_id, stripe_price_id)
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
         ON CONFLICT DO NOTHING
         RETURNING *;
       `,
@@ -47,11 +48,12 @@ async function createProduct({
         category_id,
         color,
         fragrance,
-        stripeProductId,
+        stripeProduct.id,
+        stripePrice.id,
       ]
     );
 
-    console.log('stripe product id', stripeProductId);
+    console.log('product response in DB', product);
 
     if (!product) {
       console.log('tried to create a duplicate product', name, size);

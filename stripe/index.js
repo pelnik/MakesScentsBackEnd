@@ -84,7 +84,7 @@ async function makeStripeProduct({
       product: product.id,
     });
 
-    return product.id;
+    return { product, price };
   } catch (error) {
     throw error;
   }
