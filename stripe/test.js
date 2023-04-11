@@ -1,62 +1,28 @@
+const { archiveProducts, makeStripeProduct } = require('.');
+
 require('dotenv').config();
 const { STRIPE_KEY } = process.env;
 
+// Need full URL for stripe integration
+const BASE_URL_OF_SITE = 'makes-scents.netlify.app';
+
 const stripe = require('stripe')(STRIPE_KEY);
 
-async function archiveProducts() {
+async function listProducts() {
   const response = await stripe.products.list();
-  const products = response.data;
-
-  const priceResponse = await stripe.prices.list();
-  const prices = priceResponse.data;
-
-  const pricePromises = [];
-  prices
-    .filter((price) => {
-      return price.active === true;
-    })
-    .forEach((price) => {
-      pricePromises.push(
-        stripe.price.update(price.id, {
-          active: false,
-        })
-      );
-    });
-
-  const resolvedPricePromises = await Promise.all(pricePromises);
-
-  const productPromises = [];
-  products
-    .filter((product) => {
-      return product.active === true;
-    })
-    .forEach((product) => {
-      productPromises.push(
-        stripe.products.update(product.id, {
-          active: false,
-        })
-      );
-    });
-
-  const resolvedPromises = await Promise.all(productPromises);
+  console.log('response', response);
+  console.log('response images', response.data[0].images);
 }
 
-async function makeProducts() {
-  const product = await stripe.products.create({
-    name: 'Great product',
-  });
+listProducts();
 
-  const price = await stripe.prices.create({
-    unit_amount: 999,
-    currency: 'usd',
-    product: product.id,
-  });
-}
+archiveProducts();
 
-async function initializeProducts() {
-  await archiveProducts();
-  await makeProducts();
-}
-
-// makeProducts();
-initializeProducts();
+makeStripeProduct({
+  product_name: 'Cool new product',
+  description: 'Its so cool.',
+  pic_url: '/Media/diffuser-1.jpg',
+  unit_amount: '$5.99',
+}).then((product) => {
+  console.log('newProductId', product);
+});

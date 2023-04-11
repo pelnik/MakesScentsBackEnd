@@ -13,6 +13,8 @@ const {
   getAllProducts,
 } = require('./');
 
+const { archiveProducts } = require('../stripe');
+
 const { faker } = require('@faker-js/faker');
 
 // Update to change all users and products
@@ -80,6 +82,7 @@ async function createTables() {
         category_id INTEGER REFERENCES categories(id),
         color VARCHAR(255) NOT NULL,
         fragrance VARCHAR(255) NOT NULL,
+        stripe_product_id VARCHAR(255) UNIQUE NOT NULL,
         UNIQUE(name, size)
       );
     `);
@@ -945,7 +948,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Spring Bloom',
       description:
-        "This blend is a delicate and sophisticated fragrance that captures the essence of a fresh spring garden. This scent combines notes of soft jasmine, sweet honeysuckle, and bright citrus, with a touch of musky cedarwood and earthy vetiver. The result is a floral and refreshing aroma that will uplift your mood and brighten your day. It is inspired by the beauty and freshness of a blooming flower. This diffuser is perfect for adding a touch of elegance and sophistication to your home decor, and for creating a calming and refreshing ambiance.",
+        'This blend is a delicate and sophisticated fragrance that captures the essence of a fresh spring garden. This scent combines notes of soft jasmine, sweet honeysuckle, and bright citrus, with a touch of musky cedarwood and earthy vetiver. The result is a floral and refreshing aroma that will uplift your mood and brighten your day. It is inspired by the beauty and freshness of a blooming flower. This diffuser is perfect for adding a touch of elegance and sophistication to your home decor, and for creating a calming and refreshing ambiance.',
       price: '$19.99',
       pic_url: '/Media/diffuser_4.jpg',
       size: 'N',
@@ -958,7 +961,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Sunburst',
       description:
-        "Our signature scent is a bright and refreshing fragrance that captures the essence of a sunny summer day. This scent combines notes of juicy mandarin, zesty lemon, and sweet orange blossom, with a hint of warm vanilla and musky sandalwood. The result is a delightful and uplifting aroma that will energize your senses and brighten your mood.",
+        'Our signature scent is a bright and refreshing fragrance that captures the essence of a sunny summer day. This scent combines notes of juicy mandarin, zesty lemon, and sweet orange blossom, with a hint of warm vanilla and musky sandalwood. The result is a delightful and uplifting aroma that will energize your senses and brighten your mood.',
       price: '$24.99',
       pic_url: '/Media/diffuser_5.jpg',
       size: 'N',
@@ -971,7 +974,7 @@ async function createInitialProducts() {
     await createProduct({
       name: 'Rose Petals',
       description:
-        "Our signature scent is a delicate and feminine fragrance that captures the essence of fresh roses in bloom. This scent combines notes of fragrant rose petals, sweet jasmine, and soft lily of the valley, with a hint of warm sandalwood and musk. The result is a soothing and enchanting aroma that will transport you to a blooming garden on a warm summer day.",
+        'Our signature scent is a delicate and feminine fragrance that captures the essence of fresh roses in bloom. This scent combines notes of fragrant rose petals, sweet jasmine, and soft lily of the valley, with a hint of warm sandalwood and musk. The result is a soothing and enchanting aroma that will transport you to a blooming garden on a warm summer day.',
       price: '$23.99',
       pic_url: '/Media/diffuser_6.jpg',
       size: 'N',
@@ -1094,27 +1097,40 @@ async function createInitialProducts() {
           size = 'L';
         }
 
+        // Reaching Stripe rate limit so need to stagger requests
         product_promises.push(
-          createProduct({
-            name: faker.commerce.productName(),
-            description: faker.commerce.productDescription(),
-            price: faker.commerce.price(9, 50, 2, '$'),
-            pic_url: faker.image.food(300, 200, true),
-            size,
-            inventory: faker.datatype.number(5),
-            category_id: faker.datatype.number({
-              min: 1,
-              max: 3,
-            }),
-            color: faker.color.human(),
-            fragrance: faker.commerce.productAdjective(),
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(
+                createProduct({
+                  name: faker.commerce.productName(),
+                  description: faker.commerce.productDescription(),
+                  price: faker.commerce.price(9, 50, 2, '$'),
+                  pic_url: faker.image.food(300, 200, true),
+                  size,
+                  inventory: faker.datatype.number(5),
+                  category_id: faker.datatype.number({
+                    min: 1,
+                    max: 3,
+                  }),
+                  color: faker.color.human(),
+                  fragrance: faker.commerce.productAdjective(),
+                })
+              );
+            }, Math.random() * 60 * 1000);
           })
         );
       }
 
       const allPromises = await Promise.all(product_promises);
+      console.log(
+        'all product promises',
+        allPromises,
+        'all Prmoises length',
+        allPromises.length
+      );
 
-      console.log('product promises', allPromises[30]);
+      console.log('product promises', allPromises[0]);
     }
 
     console.log('Finished create initial products');
@@ -1184,6 +1200,7 @@ async function rebuildDB() {
     await createTables();
     await createInitialUsers();
     await createInitialCategories();
+    await archiveProducts();
     await createInitialProducts();
     await createInitialCartProducts();
     console.log('Finished rebuilding DB');
