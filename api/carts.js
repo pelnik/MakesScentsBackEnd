@@ -1,6 +1,10 @@
 const express = require('express');
 const cartsRouter = express.Router();
 
+const { STRIPE_KEY } = process.env;
+const stripe = require('stripe')(STRIPE_KEY);
+const WEBSITE_DOMAIN = 'https://makes-scents.netlify.app';
+
 const { requireUser, requireAdminUser } = require('./utils.js');
 const { getCartItems, updateCart, removeOldCarts } = require('../db');
 
@@ -63,6 +67,74 @@ cartsRouter.patch('/:cart_id', requireAdminUser, async (req, res, next) => {
     });
   }
 });
+
+async function createCartArray(userId) {
+  try {
+    const cartResponse = await getCartItems({
+      user_id: userId,
+      is_active: true,
+    });
+    console.log('cart Response', cartResponse);
+
+    const cartItems = cartResponse.items;
+
+    const mappedItems = cartItems
+      .filter((item) => {
+        return item.quantity > 0;
+      })
+      .map((item) => {
+        return {
+          price: item.stripe_price_id,
+          quantity: item.quantity,
+        };
+      });
+
+    console.log('mappedItems', mappedItems);
+
+    return mappedItems;
+  } catch ({ name, message }) {
+    next({
+      name,
+      message,
+    });
+  }
+}
+
+cartsRouter.post(
+  '/create-checkout-session',
+  requireUser,
+  async (req, res, next) => {
+    try {
+      const stripeItems = await createCartArray(req.user.id);
+
+      console.log('stripe-items', stripeItems);
+
+      if (stripeItems.length > 0) {
+        const session = await stripe.checkout.sessions.create({
+          line_items: stripeItems,
+          mode: 'payment',
+          success_url: `https://${WEBSITE_DOMAIN}/checkout-success`,
+          cancel_url: `https://${WEBSITE_DOMAIN}/checkout-cancel`,
+          automatic_tax: { enabled: true },
+        });
+
+        console.log('session', session);
+
+        res.redirect(303, session.url);
+      } else {
+        next({
+          name: 'NoItemsInCart',
+          message: 'No items to checkout in cart.',
+        });
+      }
+    } catch ({ name, message }) {
+      next({
+        name,
+        message,
+      });
+    }
+  }
+);
 
 // Close old cart and get new one
 cartsRouter.post('/:cart_id', requireUser, async (req, res, next) => {

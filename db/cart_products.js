@@ -18,6 +18,8 @@ async function getAllCartItems({ cart_id }) {
         p.inventory As product_inventory,
         p.color As product_color,
         p.fragrance As product_fragrance,
+        p.stripe_product_id As stripe_product_id,
+        p.stripe_price_id As stripe_price_id,
         c.category_name
       FROM cart_products cp
       LEFT JOIN products p
