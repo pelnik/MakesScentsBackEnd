@@ -68,59 +68,38 @@ cartsRouter.patch('/:cart_id', requireAdminUser, async (req, res, next) => {
   }
 });
 
-async function createCartArray(userId) {
-  try {
-    const cartResponse = await getCartItems({
-      user_id: userId,
-      is_active: true,
-    });
-    console.log('cart Response', cartResponse);
-
-    const cartItems = cartResponse.items;
-
-    const mappedItems = cartItems
-      .filter((item) => {
-        return item.quantity > 0;
-      })
-      .map((item) => {
-        return {
-          price: item.stripe_price_id,
-          quantity: item.quantity,
-        };
-      });
-
-    console.log('mappedItems', mappedItems);
-
-    return mappedItems;
-  } catch ({ name, message }) {
-    next({
-      name,
-      message,
-    });
-  }
-}
-
 cartsRouter.post(
   '/create-checkout-session',
   requireUser,
   async (req, res, next) => {
     try {
-      const stripeItems = await createCartArray(req.user.id);
+      const cartItemResponse = await getCartItems({
+        user_id: req.user.id,
+        is_active: true,
+      });
 
-      console.log('stripe-items', stripeItems);
+      const cartItems = cartItemResponse.items;
 
-      if (stripeItems.length > 0) {
-        const session = await stripe.checkout.sessions.create({
-          line_items: stripeItems,
-          mode: 'payment',
-          success_url: `https://${WEBSITE_DOMAIN}/checkout-success`,
-          cancel_url: `https://${WEBSITE_DOMAIN}/checkout-cancel`,
-          automatic_tax: { enabled: true },
+      console.log('cart items', cartItemResponse, 'items', cartItems);
+
+      if (cartItems.length > 0) {
+        const total = cartItems.reduce((acc, item) => {
+          const cleanPrice = item.product_price.slice(1);
+          const numY = parseFloat(cleanPrice);
+
+          itemSubtotal = numY * item.quantity * 100;
+
+          return acc + itemSubtotal;
+        }, 0);
+        const roundedTotal = Math.round(total);
+
+        const intent = await stripe.paymentIntents.create({
+          amount: roundedTotal,
+          currency: 'usd',
+          automatic_payment_methods: { enabled: true },
         });
 
-        console.log('session', session);
-
-        res.redirect(303, session.url);
+        res.send({ client_secret: intent.client_secret });
       } else {
         next({
           name: 'NoItemsInCart',
