@@ -68,52 +68,52 @@ cartsRouter.patch('/:cart_id', requireAdminUser, async (req, res, next) => {
   }
 });
 
-cartsRouter.post(
-  '/create-checkout-session',
-  requireUser,
-  async (req, res, next) => {
-    try {
-      const cartItemResponse = await getCartItems({
-        user_id: req.user.id,
-        is_active: true,
+cartsRouter.get('/stripe-secret', requireUser, async (req, res, next) => {
+  try {
+    const cartItemResponse = await getCartItems({
+      user_id: req.user.id,
+      is_active: true,
+    });
+
+    const cartItems = cartItemResponse.items;
+
+    console.log('cart items', cartItemResponse, 'items', cartItems);
+
+    if (cartItems.length > 0) {
+      const total = cartItems.reduce((acc, item) => {
+        const cleanPrice = item.product_price.slice(1);
+        const numY = parseFloat(cleanPrice);
+
+        itemSubtotal = numY * item.quantity * 100;
+
+        return acc + itemSubtotal;
+      }, 0);
+      const roundedTotal = Math.round(total);
+
+      const intent = await stripe.paymentIntents.create({
+        amount: roundedTotal,
+        currency: 'usd',
+        automatic_payment_methods: { enabled: true },
       });
 
-      const cartItems = cartItemResponse.items;
-
-      console.log('cart items', cartItemResponse, 'items', cartItems);
-
-      if (cartItems.length > 0) {
-        const total = cartItems.reduce((acc, item) => {
-          const cleanPrice = item.product_price.slice(1);
-          const numY = parseFloat(cleanPrice);
-
-          itemSubtotal = numY * item.quantity * 100;
-
-          return acc + itemSubtotal;
-        }, 0);
-        const roundedTotal = Math.round(total);
-
-        const intent = await stripe.paymentIntents.create({
-          amount: roundedTotal,
-          currency: 'usd',
-          automatic_payment_methods: { enabled: true },
-        });
-
-        res.send({ client_secret: intent.client_secret });
-      } else {
-        next({
-          name: 'NoItemsInCart',
-          message: 'No items to checkout in cart.',
-        });
-      }
-    } catch ({ name, message }) {
+      res.send({
+        success: true,
+        message: "Here's you payment info",
+        client_secret: intent.client_secret,
+      });
+    } else {
       next({
-        name,
-        message,
+        name: 'NoItemsInCart',
+        message: 'No items to checkout in cart.',
       });
     }
+  } catch ({ name, message }) {
+    next({
+      name,
+      message,
+    });
   }
-);
+});
 
 // Close old cart and get new one
 cartsRouter.post('/:cart_id', requireUser, async (req, res, next) => {
