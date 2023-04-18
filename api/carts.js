@@ -123,7 +123,7 @@ cartsRouter.post('/:cart_id', requireUser, async (req, res, next) => {
     let { cart_id } = req.params;
     cart_id = Number(cart_id);
 
-    const ALLOWED_STATUSES = ['Cancelled', 'Completed'];
+    const ALLOWED_STATUSES = ['Cancelled', 'Completed', 'Processing'];
 
     const currentCart = await getCartItems({ user_id, is_active: true });
 
