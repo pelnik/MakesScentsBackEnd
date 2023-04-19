@@ -9,7 +9,9 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.options('*', cors());
 app.use(cors());
+
 app.use(morgan('dev'));
 
 app.use(express.json());
