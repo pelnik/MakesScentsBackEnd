@@ -4,7 +4,6 @@ const connectionString =
   process.env.DATABASE_URL || 'https://localhost:5432/grace-dev';
 
 console.log('connection up', connectionString);
-console.log('NODE_ENV', process.env.NODE_ENV);
 
 let client = new Pool({
   connectionString,

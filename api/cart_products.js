@@ -127,7 +127,6 @@ cartProductsRouter.post('/:product_id', async (req, res, next) => {
     const cartProduct = await getCartItems({ user_id, is_active: true });
 
     const cart_id = cartProduct.id;
-    console.log('cart id', cart_id);
 
     if (quantity === undefined) {
       next({

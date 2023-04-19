@@ -1124,12 +1124,6 @@ async function createInitialProducts() {
       }
 
       const allPromises = await Promise.all(product_promises);
-      console.log(
-        'all product promises',
-        allPromises,
-        'all Prmoises length',
-        allPromises.length
-      );
 
       console.log('product promises', allPromises[0]);
     }

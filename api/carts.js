@@ -77,8 +77,6 @@ cartsRouter.get('/stripe-secret', requireUser, async (req, res, next) => {
 
     const cartItems = cartItemResponse.items;
 
-    console.log('cart items', cartItemResponse, 'items', cartItems);
-
     if (cartItems.length > 0) {
       const total = cartItems.reduce((acc, item) => {
         const cleanPrice = item.product_price.slice(1);

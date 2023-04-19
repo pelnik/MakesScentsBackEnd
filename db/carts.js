@@ -31,8 +31,6 @@ async function removeOldCarts({ user_id, status }) {
   try {
     const newCart = await createNewCart({ user_id });
 
-    console.log('newCart', newCart);
-
     if (newCart === undefined) {
       throw new Error('Error creating new cart');
     }

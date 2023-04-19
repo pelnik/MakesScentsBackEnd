@@ -27,8 +27,6 @@ async function createProduct({
         unit_amount: price,
       });
 
-    console.log('stripe product id', stripeProduct.id);
-
     const {
       rows: [product],
     } = await client.query(
@@ -52,8 +50,6 @@ async function createProduct({
         stripePrice.id,
       ]
     );
-
-    console.log('product response in DB', product);
 
     if (!product) {
       console.log('tried to create a duplicate product', name, size);
@@ -147,7 +143,6 @@ async function updateProduct({ id, ...fields }) {
       `,
       Object.values(fields)
     );
-    console.log('product', product);
 
     return product;
   } catch (error) {
