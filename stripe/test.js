@@ -5,7 +5,7 @@ require('dotenv').config();
 const { STRIPE_KEY } = process.env;
 
 // Need full URL for stripe integration
-const BASE_URL_OF_SITE = 'makes-scents.netlify.app';
+const BASE_URL_OF_SITE = 'makes-scents-store.netlify.app';
 
 const stripe = require('stripe')(STRIPE_KEY);
 
